@@ -1,1 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Research · Puppetronics</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="assets/favicon.png" />
+  <style>.active-link{font-weight:600}</style>
+</head>
+<body class="min-h-screen bg-white text-zinc-900">
+  <!-- header -->
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-zinc-200">
+    <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="font-semibold tracking-tight">Lenny Filler · Puppetronics</a>
+      <nav class="hidden md:flex gap-6 text-sm">
+        <a href="index.html">Home</a><a href="works.html">Works</a><a href="statement.html">Statement</a>
+        <a href="research.html">Research</a><a href="cv.html">CV</a><a href="contact.html">Contact</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden p-2 rounded border border-zinc-300" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle menu">☰</button>
+    </div>
+    <nav id="mobileNav" class="md:hidden hidden border-t border-zinc-200">
+      <div class="mx-auto max-w-6xl px-4 py-3 grid gap-3 text-sm">
+        <a href="index.html">Home</a><a href="works.html">Works</a><a href="statement.html">Statement</a>
+        <a href="research.html">Research</a><a href="cv.html">CV</a><a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="mx-auto max-w-3xl px-4 py-12 prose prose-zinc">
+    <h1>Research Focus</h1>
+    <p>
+      The Evolution of Figurative Sculpture by Female Artists (1925–2025): material use,
+      body perception, and life-stage interests across Euro‑American contexts.
+    </p>
+    <ul>
+      <li>Comparative case studies (10 US + 10 European sculptors)</li>
+      <li>Material choices vs. generational symbols</li>
+      <li>Aging, embodiment, and representation</li>
+    </ul>
+    <p>Selected PDFs and reading lists coming soon.</p>
+  </main>
+
+  <footer class="border-t border-zinc-200">
+    <div class="mx-auto max-w-6xl px-4 py-6 text-sm text-zinc-600 flex items-center justify-between">
+      <p>© <span id="year"></span> Lenny Filler.</p><a class="underline" href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    const btn=document.getElementById('menuBtn');const mobileNav=document.getElementById('mobileNav');
+    btn?.addEventListener('click',()=>{const open=mobileNav.classList.toggle('hidden')===false;btn.setAttribute('aria-expanded',String(open));});
+    const here=location.pathname.split('/').pop()||'index.html';
+    document.querySelectorAll('nav a').forEach(a=>{if(a.getAttribute('href')===here)a.classList.add('active-link');});
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
 
