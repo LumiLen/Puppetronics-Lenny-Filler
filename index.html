@@ -58,25 +58,25 @@ I like combining mediums from different eras, exploring what separates the old f
             <a href="statement.html" class="px-4 py-2 rounded-2xl border border-zinc-300">Artist statement</a>
           </div>
         </div>
-        <div class="aspect-[4/3] rounded-3xl shadow-lg bg-gradient-to-br from-zinc-200 to-zinc-50 grid place-items-center overflow-hidden">
-          <!-- Swap for a real image or video -->
-          <img src="assets/hero.jpg" alt="Hero image: puppet/mechanism" class="w-full h-full object-cover" loading="eager" decoding="async">
-        </div>
+       <!-- HERO image swapper -->
+<div id="heroSwap" class="relative aspect-[4/3] rounded-3xl shadow-lg overflow-hidden bg-zinc-200">
+  <!-- A: your photo -->
+  <img id="heroA"
+       src="assets/hero.jpg"
+       alt="Portrait of Lenny in the studio"
+       class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-out">
+
+  <!-- B: your logo -->
+  <img id="heroB"
+       src="assets/favicon2.png"
+       alt="LenzF logo"
+       class="absolute inset-0 w-full h-full object-contain bg-white transition-opacity duration-700 ease-out opacity-0">
+</div>
+
       </div>
     </section>
 
-    <!-- INTRO BLURB + DOWNLOADS -->
-    <section class="mx-auto max-w-6xl px-4">
-      <p class="text-zinc-700">
-        Figurative sculpture, puppetry, and scenography by Lenny Filler. Hand‑built marionettes,
-        experimental mechanisms, and research into a century of female sculptors.
-      </p>
-      <div class="mt-6 flex flex-wrap gap-3">
-        <a href="assets/Lenny-Filler-Portfolio.pdf" class="px-4 py-2 rounded bg-zinc-900 text-white" download>Download Portfolio (PDF)</a>
-        <a href="assets/Lenny-Filler-CV.pdf" class="px-4 py-2 rounded border border-zinc-300" download>Download CV (PDF)</a>
-      </div>
-    </section>
-
+    
     <!-- HOME HIGHLIGHTS -->
     <section class="mx-auto max-w-6xl px-4 mt-16">
       <h2 class="text-xl font-semibold">Highlights</h2>
@@ -150,5 +150,25 @@ I like combining mediums from different eras, exploring what separates the old f
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script>
+  const a = document.getElementById('heroA');
+  const b = document.getElementById('heroB');
+  let showA = true;
+
+  function swap() {
+    if (showA) {
+      a.classList.add('opacity-0');
+      b.classList.remove('opacity-0');
+    } else {
+      b.classList.add('opacity-0');
+      a.classList.remove('opacity-0');
+    }
+    showA = !showA;
+  }
+
+  // Swap every 5 seconds
+  setInterval(swap, 5000);
+</script>
+
 </body>
 </html>
