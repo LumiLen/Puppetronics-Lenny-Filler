@@ -12,14 +12,14 @@
   </style>
 </head>
 <body class="min-h-screen bg-white text-zinc-900 scroll-smooth">
-  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-zinc-900 text-white px-3 py-2 rounded">Skip to content</a>
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[999] bg-zinc-900 text-white px-3 py-2 rounded">Skip to content</a>
 
   <!-- NAV -->
   <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-zinc-200">
     <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
       <a href="index.html" class="font-semibold tracking-tight">Lenny Filler · Puppetronics</a>
 
-      <nav id="desktopNav" class="hidden md:flex gap-6 text-sm">
+      <nav id="desktopNav" class="hidden md:flex gap-6 text-sm" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="works.html">Works</a>
         <a href="statement.html">Statement</a>
@@ -28,11 +28,9 @@
         <a href="contact.html">Contact</a>
       </nav>
 
-      <button id="menuBtn" class="md:hidden p-2 rounded border border-zinc-300" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle menu">
-        ☰
-      </button>
+      <button id="menuBtn" class="md:hidden p-2 rounded border border-zinc-300" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle menu">☰</button>
     </div>
-    <nav id="mobileNav" class="md:hidden hidden border-t border-zinc-200">
+    <nav id="mobileNav" class="md:hidden hidden border-t border-zinc-200 bg-white/90" aria-label="Mobile">
       <div class="mx-auto max-w-6xl px-4 py-3 grid gap-3 text-sm">
         <a href="index.html">Home</a>
         <a href="works.html">Works</a>
@@ -44,51 +42,48 @@
     </nav>
   </header>
 
-  {/* HERO */}
-      <section id="home" className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-zinc-50 via-emerald-50 to-zinc-50" />
-        <div className="mx-auto max-w-6xl px-4 py-20 grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 className="text-4xl md:text-5xl font-semibold leading-tight">
-              Puppetronics — Breathing Life into the Inanimate
-            </h1>
-            <p className="mt-5 text-lg text-zinc-700">
-              I create puppets that live. Through sensors, microcontrollers, and carefully written code, I give sculpted figures the ability to move, glow, and respond to the world around them — even when they’re not in my hands. This is not robotics in the utilitarian sense; it’s a search for presence. My question is not “What can the machine do for me?” but “How do I breathe life into a character?”
-            </p>
-            <div className="mt-6 flex gap-3">
-              <a href="#works" className="px-4 py-2 rounded-2xl bg-zinc-900 text-white">
-                View selected works
-              </a>
-              <a href="#statement" className="px-4 py-2 rounded-2xl border border-zinc-300">
-                Artist statement
-              </a>
-            </div>
-          </div>
-          <div className="aspect-[4/3] rounded-3xl shadow-lg bg-gradient-to-br from-zinc-200 to-zinc-50 grid place-items-center">
-            {/* Swap for a real image or video */}
-            <span className="text-sm text-zinc-600">Hero image placeholder</span>
+  <main id="main" class="">
+    <!-- HERO -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 -z-10 bg-gradient-to-br from-zinc-50 via-emerald-50 to-zinc-50"></div>
+      <div class="mx-auto max-w-6xl px-4 py-20 grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-semibold leading-tight">Puppetronics — Breathing Life into the Inanimate</h1>
+          <p class="mt-5 text-lg text-zinc-700">
+            I create puppets that live. Through sensors, microcontrollers, and carefully written code, I give
+            sculpted figures the ability to move, glow, and respond to the world around them — even when they’re not in my
+            hands. This is not robotics in the utilitarian sense; it’s a search for presence. My question is not
+            “What can the machine do for me?” but “How do I breathe life into a character?”
+          </p>
+          <div class="mt-6 flex gap-3">
+            <a href="works.html" class="px-4 py-2 rounded-2xl bg-zinc-900 text-white">View selected works</a>
+            <a href="statement.html" class="px-4 py-2 rounded-2xl border border-zinc-300">Artist statement</a>
           </div>
         </div>
-      </section>
-  
-          Figurative sculpture, puppetry, and scenography by Lenny Filler. Hand‑built marionettes,
-          experimental mechanisms, and research into a century of female sculptors.
-        </p>
-        <div class="mt-6 flex gap-3">
-          <a href="assets/Lenny-Filler-Portfolio.pdf" class="px-4 py-2 rounded bg-zinc-900 text-white" download>Download Portfolio (PDF)</a>
-          <a href="assets/Lenny-Filler-CV.pdf" class="px-4 py-2 rounded border border-zinc-300" download>Download CV (PDF)</a>
+        <div class="aspect-[4/3] rounded-3xl shadow-lg bg-gradient-to-br from-zinc-200 to-zinc-50 grid place-items-center overflow-hidden">
+          <!-- Swap for a real image or video -->
+          <img src="assets/hero.jpg" alt="Hero image: puppet/mechanism" class="w-full h-full object-cover" loading="eager" decoding="async">
         </div>
       </div>
-      <div class="aspect-[16/10] bg-zinc-100 rounded-xl overflow-hidden flex items-center justify-center">
-        <img src="assets/hero.jpg" alt="Hero image: puppet/mechanism" class="w-full h-full object-cover" loading="eager" decoding="async">
+    </section>
+
+    <!-- INTRO BLURB + DOWNLOADS -->
+    <section class="mx-auto max-w-6xl px-4">
+      <p class="text-zinc-700">
+        Figurative sculpture, puppetry, and scenography by Lenny Filler. Hand‑built marionettes,
+        experimental mechanisms, and research into a century of female sculptors.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="assets/Lenny-Filler-Portfolio.pdf" class="px-4 py-2 rounded bg-zinc-900 text-white" download>Download Portfolio (PDF)</a>
+        <a href="assets/Lenny-Filler-CV.pdf" class="px-4 py-2 rounded border border-zinc-300" download>Download CV (PDF)</a>
       </div>
     </section>
 
     <!-- HOME HIGHLIGHTS -->
-    <section class="mt-16">
+    <section class="mx-auto max-w-6xl px-4 mt-16">
       <h2 class="text-xl font-semibold">Highlights</h2>
       <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Card -->
+        <!-- Card 1 -->
         <article class="rounded-xl border border-zinc-200 overflow-hidden">
           <img src="assets/project1.jpg" alt="Cardboard marionette, 2024" class="w-full h-44 object-cover" loading="lazy" decoding="async">
           <div class="p-4">
@@ -97,7 +92,7 @@
             <a href="works.html" class="inline-block mt-3 text-sm underline">See all works →</a>
           </div>
         </article>
-
+        <!-- Card 2 -->
         <article class="rounded-xl border border-zinc-200 overflow-hidden">
           <div class="w-full h-44 bg-zinc-100 flex items-center justify-center">
             <video class="w-full h-full object-cover" controls playsinline preload="metadata">
@@ -109,7 +104,7 @@
             <p class="text-sm text-zinc-600 mt-2">2D puppetry movement experiments inspired by classmates’ designs.</p>
           </div>
         </article>
-
+        <!-- Card 3 -->
         <article class="rounded-xl border border-zinc-200 overflow-hidden">
           <img src="assets/project3.jpg" alt="Wood and wire figure" class="w-full h-44 object-cover" loading="lazy" decoding="async">
           <div class="p-4">
@@ -122,7 +117,7 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="border-t border-zinc-200">
+  <footer class="border-t border-zinc-200 mt-16">
     <div class="mx-auto max-w-6xl px-4 py-6 text-sm text-zinc-600 flex items-center justify-between">
       <p>© <span id="year"></span> Lenny Filler. All rights reserved.</p>
       <a href="contact.html" class="underline">Contact</a>
@@ -130,15 +125,15 @@
   </footer>
 
   <script>
-    // Mobile menu
+    // Mobile menu toggle
     const btn = document.getElementById('menuBtn');
     const mobileNav = document.getElementById('mobileNav');
-    btn?.addEventListener('click', () => {
+    btn && btn.addEventListener('click', () => {
       const open = mobileNav.classList.toggle('hidden') === false;
       btn.setAttribute('aria-expanded', String(open));
     });
 
-    // Active nav link
+    // Mark active nav link based on file name
     const here = location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('nav a').forEach(a => {
       const href = a.getAttribute('href');
