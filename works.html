@@ -64,11 +64,21 @@
     </div>
   </main>
 
-  <footer class="border-t border-zinc-200">
-    <div class="mx-auto max-w-6xl px-4 py-6 text-sm text-zinc-600 flex items-center justify-between">
-      <p>© <span id="year"></span> Lenny Filler.</p><a class="underline" href="contact.html">Contact</a>
-    </div>
-  </footer>
+ <footer class="border-t border-zinc-200 mt-16">
+  <div class="mx-auto max-w-6xl px-4 py-6 flex flex-col items-center gap-2 text-center">
+    <a href="index.html">
+      <img 
+        src="assets/favicon2.png" 
+        alt="LenzF logo" 
+        class="w-14 h-14"
+        loading="lazy"
+        decoding="async"
+      >
+    </a>
+    <a href="index.html" class="font-semibold text-sm tracking-wide">LenzF</a>
+    <p class="text-xs text-zinc-600">© <span id="year"></span> All rights reserved.</p>
+  </div>
+</footer>
 
   <script>
     const btn=document.getElementById('menuBtn');const mobileNav=document.getElementById('mobileNav');
