@@ -26,13 +26,13 @@
     </nav>
   </header>
 
-  <!-- MAIN with full-page background + overlay -->
+  <!-- MAIN with fixed (parallax) background -->
   <main class="relative min-h-screen">
-    <!-- Background image -->
-    <div class="absolute inset-0 -z-20 bg-cover bg-center"
+    <!-- Fixed background image -->
+    <div class="fixed inset-0 -z-20 bg-cover bg-center"
          style="background-image:url('assets/lenzweldhorz.png');"></div>
-    <!-- Readability overlay (tweak 60–80% as you like) -->
-    <div class="absolute inset-0 -z-10 bg-white/50"></div>
+    <!-- Fixed readability overlay -->
+    <div class="fixed inset-0 -z-10 bg-white/70 pointer-events-none"></div>
 
     <!-- Content with ~3cm side margins on wide screens -->
     <section class="mx-auto w-full max-w-[calc(100%-6cm)] px-4 md:px-8 py-12">
