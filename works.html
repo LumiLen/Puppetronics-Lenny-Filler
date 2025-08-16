@@ -7,11 +7,11 @@
   <link rel="icon" href="assets/favicon.png" />
   <style>.active-link{font-weight:600}</style>
 </head>
-<body class="min-h-screen text-zinc-900">
+<body class="min-h-screen">
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-zinc-900 text-white px-3 py-2 rounded">Skip to content</a>
 
   <!-- header (unchanged) -->
-  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/20 border-b border-zinc-200">
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/35 border-b border-zinc-200">
     <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
       <a href="index.html" class="font-semibold tracking-tight">Lenny Filler · PuppetX</a>
       <nav class="hidden md:flex gap-6 text-sm">
@@ -28,25 +28,31 @@
     </nav>
   </header>
 
-  <!-- MAIN with fixed background -->
-  <main id="main" class="relative">
-    <!-- Fixed background image -->
-    <div class="fixed inset-0 -z-20 bg-cover bg-center"
-         style="background-image:url('assets/studio.png');"></div>
-    <!-- Soft overlay for readability (tweak 60–80 as you like) -->
-    <div class="fixed inset-0 -z-10 bg-white/10 pointer-events-none"></div>
+  <!-- MAIN with FIXED background (same behavior as Apps & Gear) -->
+  <main id="main" class="relative min-h-screen text-white">
+    <!-- Fixed background image (keeps entire image visible) -->
+    <div class="fixed inset-0 -z-20 flex items-center justify-center">
+      <!-- use your studio image here -->
+      <img src="assets/studio.png" alt="Workshop background"
+           class="w-full h-full object-contain select-none pointer-events-none" />
+    </div>
+    <!-- Light white filter for readability (tweak 25–45 to taste) -->
+    <div class="fixed inset-0 -z-10 bg-white/35 backdrop-blur-[1px] pointer-events-none"></div>
 
-    <!-- Your original content (unchanged structure & names) -->
-    <section class="mx-auto max-w-6xl px-4 py-12">
+    <!-- Content with ~3cm side margins; headings/intro text are WHITE -->
+    <section class="mx-auto w-full max-w-[calc(100%-6cm)] px-4 md:px-8 py-12">
       <h1 class="text-2xl md:text-4xl font-semibold tracking-tight">Works</h1>
-      <p class="mt-3 text-zinc-600">A selection of marionettes, mechanisms, and set experiments.</p>
+      <p class="mt-3 max-w-3xl">
+        A selection of marionettes, mechanisms, and set experiments.
+      </p>
 
+      <!-- Your original grid of boxes (KEPT; boxes stay white with dark text) -->
       <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Card 1 -->
         <article class="rounded-xl border border-zinc-200 overflow-hidden bg-white">
           <img src="assets/project1.jpg" alt="Cardboard marionette, 2024" class="w-full h-48 object-cover">
-          <div class="p-4">
-            <h3 class="font-medium">Cardboard Marionette (2024)</h3>
+          <div class="p-4 text-zinc-800">
+            <h3 class="font-medium text-zinc-900">Cardboard Marionette (2024)</h3>
             <p class="text-sm text-zinc-600 mt-2">Lightweight joints and expressive motion; quick-build workshop-ready.</p>
           </div>
         </article>
@@ -58,8 +64,8 @@
               <source src="assets/project2.mp4" type="video/mp4">
             </video>
           </div>
-          <div class="p-4">
-            <h3 class="font-medium">Mechanism Study (2025)</h3>
+          <div class="p-4 text-zinc-800">
+            <h3 class="font-medium text-zinc-900">Mechanism Study (2025)</h3>
             <p class="text-sm text-zinc-600 mt-2">2D movement linkage; compact rig for classroom demos.</p>
           </div>
         </article>
@@ -67,8 +73,8 @@
         <!-- Card 3 -->
         <article class="rounded-xl border border-zinc-200 overflow-hidden bg-white">
           <img src="assets/project3.jpg" alt="Wood and wire figure" class="w-full h-48 object-cover">
-          <div class="p-4">
-            <h3 class="font-medium">Wood &amp; Wire Figure (2024)</h3>
+          <div class="p-4 text-zinc-800">
+            <h3 class="font-medium text-zinc-900">Wood &amp; Wire Figure (2024)</h3>
             <p class="text-sm text-zinc-600 mt-2">Material balance study; tactile tactility and stance.</p>
           </div>
         </article>
@@ -76,8 +82,8 @@
         <!-- Card 4 -->
         <article class="rounded-xl border border-zinc-200 overflow-hidden bg-white">
           <img src="assets/project1.jpg" alt="Cardboard marionette, 2024" class="w-full h-44 object-cover" loading="lazy" decoding="async">
-          <div class="p-4">
-            <h3 class="font-medium">Cardboard Marionette</h3>
+          <div class="p-4 text-zinc-800">
+            <h3 class="font-medium text-zinc-900">Cardboard Marionette</h3>
             <p class="text-sm text-zinc-600 mt-2">yapaa poo; yapaa ppaaah.</p>
             <a href="works.html" class="inline-block mt-3 text-sm underline">See all works →</a>
           </div>
@@ -86,8 +92,8 @@
         <!-- Card 5 -->
         <article class="rounded-xl border border-zinc-200 overflow-hidden bg-white">
           <img src="assets/project1.jpg" alt="Cardboard marionette, 2024" class="w-full h-44 object-cover" loading="lazy" decoding="async">
-          <div class="p-4">
-            <h3 class="font-medium">Cardboard Marionette</h3>
+          <div class="p-4 text-zinc-800">
+            <h3 class="font-medium text-zinc-900">Cardboard Marionette</h3>
             <p class="text-sm text-zinc-600 mt-2">bzzzzzzzzz; miaoooooo.</p>
             <a href="works.html" class="inline-block mt-3 text-sm underline">See all works →</a>
           </div>
@@ -100,12 +106,15 @@
               <source src="assets/project2.mp4" type="video/mp4">
             </video>
           </div>
-          <div class="p-4">
-            <h3 class="font-medium">Mechanism Study</h3>
+          <div class="p-4 text-zinc-800">
+            <h3 class="font-medium text-zinc-900">Mechanism Study</h3>
             <p class="text-sm text-zinc-600 mt-2">2D puppetry movement experiments inspired by classmates’ designs.</p>
           </div>
         </article>
       </div>
+
+      <!-- Spacer so you can scroll across more of the fixed background -->
+      <div class="h-[30vh] md:h-[40vh]"></div>
     </section>
   </main>
 
@@ -120,7 +129,7 @@
           decoding="async"
         >
       </a>
-      <a href="index.html" class="font-semibold text-sm tracking-wide">LenzF</a>
+      <a href="index.html" class="font-semibold text-sm tracking-wide text-zinc-900">LenzF</a>
       <p class="text-xs text-zinc-600">© <span id="year"></span> All rights reserved.</p>
     </div>
   </footer>
@@ -130,7 +139,7 @@
     btn?.addEventListener('click',()=>{const open=mobileNav.classList.toggle('hidden')===false;btn.setAttribute('aria-expanded',String(open));});
     const here=location.pathname.split('/').pop()||'index.html';
     document.querySelectorAll('nav a').forEach(a=>{if(a.getAttribute('href')===here)a.classList.add('active-link');});
-    document.getElementById('year').textContent=new Date().getFullYear();
+    const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
   </script>
 </body>
 </html>
