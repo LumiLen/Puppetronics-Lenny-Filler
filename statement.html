@@ -8,7 +8,7 @@
   <style>.active-link{font-weight:600}</style>
 </head>
 <body class="min-h-screen text-white">
-  <!-- header (same as index) -->
+  <!-- Header (same as other pages) -->
   <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-zinc-200">
     <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
       <a href="index.html" class="font-semibold tracking-tight text-zinc-900">Lenny Filler · PuppetX</a>
@@ -26,33 +26,38 @@
     </nav>
   </header>
 
-  <!-- MAIN with fixed background -->
-  <main class="relative min-h-screen">
-    <!-- Fixed background image (parallax) -->
-    <div class="fixed inset-0 -z-20 bg-center bg-no-repeat bg-cover md:bg-cover"
-         style="background-image:url('assets/city.png');"></div>
+  <main>
+    <!--
+      Background behavior:
+      - bg-contain + bg-no-repeat makes the WHOLE image visible across the height of the section
+      - We make the section tall (min-h-[220vh]) so you reveal the image top→bottom while scrolling
+      - Adjust 220vh to 180–300vh to taste
+    -->
+    <section
+      id="statement"
+      class="relative bg-no-repeat bg-top bg-contain min-h-[220vh] flex"
+      style="background-image:url('assets/city.png');"
+    >
+      <!-- Brighten the background (white filter). Tweak /35–/60 -->
+      <div class="absolute inset-0 bg-white/45 -z-10"></div>
 
-    <!-- Readability overlay (tweak /60–/85) -->
-    <div class="fixed inset-0 -z-10 bg-black/60 md:bg-black/55 pointer-events-none"></div>
+      <!-- Content -->
+      <div class="mx-auto max-w-3xl px-4 md:px-6 py-16 md:py-24">
+        <h1 class="text-2xl md:text-4xl font-semibold tracking-tight mb-6">Artist Statement</h1>
 
-    <!-- Content -->
-    <section id="statement" class="mx-auto w-full max-w-[calc(100%-6cm)] px-4 md:px-8 py-16 md:py-24">
-      <h1 class="text-2xl md:text-4xl font-semibold tracking-tight mb-6">Artist Statement</h1>
-
-      <div class="prose prose-invert prose-zinc max-w-3xl">
-        <p>
-          I’m interested in how a puppet can hold a sense of “life” — through movement, light, and a subtle response to its surroundings. It’s not robotics in the functional sense; the focus is on aesthetics, presence, and the moment a character feels alive. When I operate a puppet, it’s alive in my hands. Electrical systems just let that life linger when I step away.
-        </p>
-        <p>
-          I’m drawn to settings that carry both pain and hope, where human culture reflects itself in the mechanical, and the mechanical returns that humanity in its own way. I like the meeting point between the warmth of hand-built imperfection and the quiet precision of wires and circuits — where a human, code, electricity, and imagination meet to tell a story through the material itself.
-        </p>
-        <p>
-          Puppetronics is the meeting point between mechanism and character: how a joint, a string, or a counterweight becomes emotion in space.
-        </p>
+        <div class="prose prose-invert prose-zinc max-w-none">
+          <p>
+            I’m interested in how a puppet can hold a sense of “life” — through movement, light, and a subtle response to its surroundings. It’s not robotics in the functional sense; the focus is on aesthetics, presence, and the moment a character feels alive. When I operate a puppet, it’s alive in my hands. Electrical systems just let that life linger when I step away.
+          </p>
+          <p>
+            I’m drawn to settings that carry both pain and hope, where human culture reflects itself in the mechanical, and the mechanical returns that humanity in its own way. I like the meeting point between the warmth of hand-built imperfection and the quiet precision of wires and circuits — where a human, code, electricity, and imagination meet to tell a story through the material itself.
+          </p>
+          <p>
+            Puppetronics is the meeting point between mechanism and character: how a joint,
+            a string, or a counterweight becomes emotion in space.
+          </p>
+        </div>
       </div>
-
-      <!-- Extra vertical space so more of the image is revealed while scrolling -->
-      <div class="h-[30vh] md:h-[40vh]"></div>
     </section>
   </main>
 
