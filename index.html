@@ -44,38 +44,66 @@
 
   <main id="main" class="">
     <!-- HERO -->
-    <section class="relative overflow-hidden">
-      <div class="absolute inset-0 -z-10 bg-gradient-to-br from-zinc-50 via-emerald-50 to-zinc-50"></div>
-      <div class="mx-auto max-w-6xl px-4 py-48 grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h1 class="text-4xl md:text-5xl font-semibold leading-tight">PuppetX — Beyond strings, into motion</h1>
-          <p class="mt-5 text-lg text-zinc-700">
-My name is Lenny Filler, and I love sculpting human figures — or figures that question humanity in their own way. Each puppet begins with the joy of discovering the material, and often ends by surprising me, as if I’m only giving a small push before the magic continues on its own.
-I like combining mediums from different eras, exploring what separates the old from the new — not just in the material itself, but in how its meaning shifts within culture. My work often touches on the place of women in society, and on aesthetic and gendered perceptions of the body. I find comfort in puppets, and use both traditional methods and new tools, including AI, to experiment with animation, coding, and other techniques I never imagined using before.
-          </p>
-          <div class="mt-6 flex gap-3">
-            <a href="works.html" class="px-4 py-2 rounded-2xl bg-zinc-900 text-white">View selected works</a>
-            <a href="statement.html" class="px-4 py-2 rounded-2xl border border-zinc-300">Artist statement</a>
-          </div>
-        </div>
-       <!-- HERO image swapper -->
-<div id="heroSwap" class="relative aspect-[4/3] rounded-3xl shadow-lg overflow-hidden bg-zinc-200">
-  <!-- A: your photo -->
-  <img id="heroA"
-       src="assets/lenzweld.png"
-       alt="Lenny is standing in a forest"
-       class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-out">
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 -z-10 bg-gradient-to-br from-zinc-50 via-emerald-50 to-zinc-50"></div>
 
-  <!-- B: your logo -->
-  <img id="heroB"
-       src="assets/favicon2.png"
-       alt="LenzF logo"
-       class="absolute inset-0 w-full h-full object-contain bg-white transition-opacity duration-700 ease-out opacity-0">
-</div>
-
+  <div class="mx-auto max-w-6xl px-4 py-16 md:py-20 grid md:grid-cols-2 gap-12 items-center">
+    <!-- LEFT: text -->
+    <div>
+      <h1 class="text-4xl md:text-5xl font-semibold leading-tight">
+        PuppetX — Beyond strings, into motion
+      </h1>
+      <p class="mt-5 text-lg text-zinc-700">
+        My name is Lenny Filler, and I love sculpting human figures — or figures that
+        question humanity in their own way. Each puppet begins with the joy of discovering
+        the material, and often ends by surprising me, as if I’m only giving a small push
+        before the magic continues on its own. I like combining mediums from different eras,
+        exploring what separates the old from the new — not just in the material itself, but
+        in how its meaning shifts within culture. My work often touches on the place of women
+        in society, and on aesthetic and gendered perceptions of the body. I find comfort in
+        puppets, and use both traditional methods and new tools, including AI, to experiment
+        with animation, coding, and other techniques I never imagined using before.
+      </p>
+      <div class="mt-6 flex gap-3">
+        <a href="works.html" class="px-4 py-2 rounded-2xl bg-zinc-900 text-white">View selected works</a>
+        <a href="statement.html" class="px-4 py-2 rounded-2xl border border-zinc-300">Artist statement</a>
       </div>
-    </section>
+    </div>
 
+    <!-- RIGHT: image box with fancy swap -->
+    <div id="heroBox"
+         class="relative rounded-3xl shadow-xl overflow-hidden bg-black/10 h-[360px] md:h-[520px] lg:h-[560px]">
+
+      <!-- Base: lenzweld fixed & big -->
+      <img src="assets/lenzweld.png"
+           alt="Welding in the workshop"
+           class="absolute inset-0 w-full h-full object-cover select-none pointer-events-none">
+
+      <!-- Electric flash overlay (shown briefly before swap) -->
+      <div id="electricFx"
+           class="absolute inset-0 pointer-events-none opacity-0 mix-blend-screen">
+        <!-- soft radial flash -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.9),rgba(255,255,255,0)_60%)] opacity-70"></div>
+        <!-- zigzag spark line -->
+        <svg class="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path id="sparkPath"
+                d="M5,70 L20,60 L35,75 L50,50 L65,62 L80,45 L95,55"
+                fill="none" stroke="rgb(255,255,255)" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round"
+                style="filter: drop-shadow(0 0 6px rgba(0,255,200,0.9));"/>
+        </svg>
+      </div>
+
+      <!-- Top layer: logo that fades/zooms in & out -->
+      <img id="heroLogo"
+           src="assets/favicon2.png"
+           alt="PuppetX logo"
+           class="absolute inset-0 w-full h-full object-contain bg-white
+                  opacity-0 scale-75 transition-opacity duration-800 ease-out
+                  will-change-transform will-change-opacity">
+    </div>
+  </div>
+</section>
     
     <!-- HOME HIGHLIGHTS -->
     <section class="mx-auto max-w-6xl px-4 mt-16">
