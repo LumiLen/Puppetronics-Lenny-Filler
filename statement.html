@@ -8,7 +8,7 @@
   <style>.active-link{font-weight:600}</style>
 </head>
 <body class="min-h-screen text-white">
-  <!-- Header (same as others) -->
+  <!-- Header -->
   <header class="sticky top-0 z-50 bg-white border-b border-zinc-200">
     <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
       <a href="index.html" class="font-semibold tracking-tight text-zinc-900">Lenny Filler · PuppetX</a>
@@ -29,15 +29,17 @@
     </nav>
   </header>
 
-  <!-- FIXED background (matches Apps & Gear) -->
-  <div class="fixed inset-0 -z-20 flex items-center justify-center">
+  <!-- FIXED background (full width) -->
+  <div class="fixed inset-0 -z-20">
+    <!-- CHANGE 1: object-cover (fills width; crops some top/bottom) -->
     <img src="assets/city.png" alt="Background"
-         class="w-full h-full object-contain select-none pointer-events-none" />
+         class="w-full h-full object-cover select-none pointer-events-none" />
   </div>
-  <div class="fixed inset-0 -z-10 bg-white/5 backdrop-blur-[1px] pointer-events-none"></div>
+  <!-- CHANGE 2: slightly stronger veil for readability -->
+  <div class="fixed inset-0 -z-10 bg-white/10 backdrop-blur-[1px] pointer-events-none"></div>
 
   <main>
-    <!-- Content with ~3cm side margins and tall scroll to reveal the whole image -->
+    <!-- Content with ~3cm side margins; tall so you scroll “down the image” -->
     <section class="mx-auto w-full max-w-[calc(100%-6cm)] px-4 md:px-8 py-16 md:py-24 min-h-[220vh]">
       <h1 class="text-2xl md:text-4xl font-semibold tracking-tight mb-6">Artist Statement</h1>
 
@@ -54,8 +56,8 @@
         </p>
       </div>
 
-      <!-- extra spacer so you scroll further down the image -->
-      <div class="h-[30vh] md:h-[40vh]"></div>
+      <!-- CHANGE 3: extra spacer so you see more of the (fixed) background while scrolling -->
+      <div class="h-[40vh] md:h-[55vh]"></div>
     </section>
   </main>
 
