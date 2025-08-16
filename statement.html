@@ -7,74 +7,71 @@
   <link rel="icon" href="assets/favicon.png" />
   <style>.active-link{font-weight:600}</style>
 </head>
-<body class="min-h-screen bg-white text-zinc-900">
-  <!-- header (same as above) -->
-  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-zinc-200">
+<body class="min-h-screen text-white">
+  <!-- header (same as index) -->
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/5 border-b border-zinc-200">
     <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-      <a href="index.html" class="font-semibold tracking-tight">Lenny Filler · PuppetX</a>
+      <a href="index.html" class="font-semibold tracking-tight text-zinc-900">Lenny Filler · PuppetX</a>
       <nav class="hidden md:flex gap-6 text-sm">
+        <a href="index.html" class="text-zinc-900">Home</a><a href="works.html" class="text-zinc-900">Works</a><a href="statement.html" class="text-zinc-900">Statement</a>
+        <a href="apps-gear.html" class="text-zinc-900">Apps &amp; Gear</a><a href="cv.html" class="text-zinc-900">CV</a><a href="contact.html" class="text-zinc-900">Contact</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden p-2 rounded border border-zinc-300 text-zinc-900" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle menu">☰</button>
+    </div>
+    <nav id="mobileNav" class="md:hidden hidden border-t border-zinc-200 bg-white/5">
+      <div class="mx-auto max-w-6xl px-4 py-3 grid gap-3 text-sm text-zinc-900">
         <a href="index.html">Home</a><a href="works.html">Works</a><a href="statement.html">Statement</a>
         <a href="apps-gear.html">Apps &amp; Gear</a><a href="cv.html">CV</a><a href="contact.html">Contact</a>
-      </nav>
-      <button id="menuBtn" class="md:hidden p-2 rounded border border-zinc-300" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle menu">☰</button>
-    </div>
-    <nav id="mobileNav" class="md:hidden hidden border-t border-zinc-200">
-      <div class="mx-auto max-w-6xl px-4 py-3 grid gap-3 text-sm">
-        <a href="index.html">Home</a><a href="works.html">Works</a><a href="statement.html">Statement</a>
-       <a href="apps-gear.html">Apps &amp; Gear</a><a href="cv.html">CV</a><a href="contact.html">Contact</a>
       </div>
     </nav>
   </header>
 
-<main>
-  <section id="statement" class="relative min-h-screen flex items-center">
-    <!-- Full-bleed background image -->
-    <div class="absolute inset-0 -z-20">
-      <img src="assets/or1.jpg"
-           alt="Soft textured background behind statement"
-           class="w-full h-full object-cover">
+  <!-- MAIN with fixed background -->
+  <main class="relative min-h-screen">
+    <!-- Fixed background image (parallax) -->
+    <div class="fixed inset-0 -z-20 bg-center bg-no-repeat bg-cover md:bg-cover"
+         style="background-image:url('assets/city.png');"></div>
+
+    <!-- Readability overlay (tweak /60–/85) -->
+    <div class="fixed inset-0 -z-10 bg-black/60 md:bg-black/55 pointer-events-none"></div>
+
+    <!-- Content -->
+    <section id="statement" class="mx-auto w-full max-w-[calc(100%-6cm)] px-4 md:px-8 py-16 md:py-24">
+      <h1 class="text-2xl md:text-4xl font-semibold tracking-tight mb-6">Artist Statement</h1>
+
+      <div class="prose prose-invert prose-zinc max-w-3xl">
+        <p>
+          I’m interested in how a puppet can hold a sense of “life” — through movement, light, and a subtle response to its surroundings. It’s not robotics in the functional sense; the focus is on aesthetics, presence, and the moment a character feels alive. When I operate a puppet, it’s alive in my hands. Electrical systems just let that life linger when I step away.
+        </p>
+        <p>
+          I’m drawn to settings that carry both pain and hope, where human culture reflects itself in the mechanical, and the mechanical returns that humanity in its own way. I like the meeting point between the warmth of hand-built imperfection and the quiet precision of wires and circuits — where a human, code, electricity, and imagination meet to tell a story through the material itself.
+        </p>
+        <p>
+          Puppetronics is the meeting point between mechanism and character: how a joint, a string, or a counterweight becomes emotion in space.
+        </p>
+      </div>
+
+      <!-- Extra vertical space so more of the image is revealed while scrolling -->
+      <div class="h-[30vh] md:h-[40vh]"></div>
+    </section>
+  </main>
+
+  <footer class="border-t border-zinc-200 mt-16">
+    <div class="mx-auto max-w-6xl px-4 py-6 flex flex-col items-center gap-2 text-center">
+      <a href="index.html">
+        <img src="assets/favicon2.png" alt="LenzF logo" class="w-[84px] h-[84px]" loading="lazy" decoding="async">
+      </a>
+      <a href="index.html" class="font-semibold text-sm tracking-wide text-zinc-900">LenzF</a>
+      <p class="text-xs text-zinc-600">© <span id="year"></span> All rights reserved.</p>
     </div>
-
-    <!-- Gentle gradient overlay for readability -->
-    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60 -z-10"></div>
-
-    <!-- Your existing text, unchanged -->
-    <div class="mx-auto max-w-3xl px-4 py-12 prose prose-zinc text-white">
-      <p>
-        I’m interested in how a puppet can hold a sense of “life” — through movement, light, and a subtle response to its surroundings. It’s not robotics in the functional sense; the focus is on aesthetics, presence, and the moment a character feels alive. When I operate a puppet, it’s alive in my hands. Electrical systems just let that life linger when I step away.
-        I’m drawn to settings that carry both pain and hope, where human culture reflects itself in the mechanical, and the mechanical returns that humanity in its own way. I like the meeting point between the warmth of hand-built imperfection and the quiet precision of wires and circuits — where a human, code, electricity, and imagination meet to tell a story through the material itself.
-      </p>
-      <p>
-        Puppetronics is the meeting point between mechanism and character: how a joint,
-        a string, or a counterweight becomes emotion in space.
-      </p>
-    </div>
-  </section>
-</main>
-
- <footer class="border-t border-zinc-200 mt-16">
-  <div class="mx-auto max-w-6xl px-4 py-6 flex flex-col items-center gap-2 text-center">
-    <a href="index.html">
-      <img 
-        src="assets/favicon2.png" 
-        alt="LenzF logo" 
-        class="w-[84px] h-[84px]"
-        loading="lazy"
-        decoding="async"
-      >
-    </a>
-    <a href="index.html" class="font-semibold text-sm tracking-wide">LenzF</a>
-    <p class="text-xs text-zinc-600">© <span id="year"></span> All rights reserved.</p>
-  </div>
-</footer>
+  </footer>
 
   <script>
     const btn=document.getElementById('menuBtn');const mobileNav=document.getElementById('mobileNav');
     btn?.addEventListener('click',()=>{const open=mobileNav.classList.toggle('hidden')===false;btn.setAttribute('aria-expanded',String(open));});
     const here=location.pathname.split('/').pop()||'index.html';
     document.querySelectorAll('nav a').forEach(a=>{if(a.getAttribute('href')===here)a.classList.add('active-link');});
-    document.getElementById('year').textContent=new Date().getFullYear();
+    const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
   </script>
 </body>
 </html>
-
