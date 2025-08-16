@@ -7,23 +7,34 @@
   <meta name="description" content="PuppetX — figurative sculpture, puppetry, and research by Lenny Filler." />
   <link rel="icon" href="assets/favicon2.png" />
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
-  .active-link { font-weight: 600; }
+    .active-link { font-weight: 600; }
 
-  /* Electric swap animation */
-  @keyframes electric-flicker {
-    0%, 100% { opacity: 1; filter: brightness(1); }
-    20%, 60% { opacity: 0.8; filter: brightness(1.4) contrast(1.2); }
-    40% { opacity: 0.5; filter: brightness(2) contrast(1.6); }
-    80% { opacity: 0.7; filter: brightness(1.6) contrast(1.3); }
-  }
+    /* Electric flicker (quick) */
+    @keyframes fx-flicker {
+      0%   { opacity: 0; filter: brightness(1); }
+      10%  { opacity: .9; filter: brightness(1.4) contrast(1.2); }
+      25%  { opacity: .2; }
+      40%  { opacity: .7; filter: brightness(1.6) contrast(1.3); }
+      55%  { opacity: .1; }
+      70%  { opacity: .6; }
+      85%  { opacity: .15; }
+      100% { opacity: 0; filter: brightness(1); }
+    }
 
-  .electric {
-    animation: electric-flicker 1s ease-in-out;
-  }
-</style>
-  
+    /* Spark line dash animation */
+    @keyframes fx-spark {
+      0%   { stroke-dasharray: 0 150;   stroke-dashoffset: 0; }
+      50%  { stroke-dasharray: 80 150;  stroke-dashoffset: -10; }
+      100% { stroke-dasharray: 150 150; stroke-dashoffset: -150; }
+    }
+
+    .run-flicker { animation: fx-flicker 500ms ease-out both; }
+    .run-spark   { animation: fx-spark   500ms ease-out both; }
+  </style>
 </head>
+
 <body class="min-h-screen bg-white text-zinc-900 scroll-smooth">
   <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[999] bg-zinc-900 text-white px-3 py-2 rounded">Skip to content</a>
 
@@ -36,7 +47,7 @@
         <a href="index.html">Home</a>
         <a href="works.html">Works</a>
         <a href="statement.html">Statement</a>
-       <a href="apps-gear.html">Apps &amp; Gear</a>
+        <a href="apps-gear.html">Apps &amp; Gear</a>
         <a href="cv.html">CV</a>
         <a href="contact.html">Contact</a>
       </nav>
@@ -55,69 +66,68 @@
     </nav>
   </header>
 
-  <main id="main" class="">
+  <main id="main">
     <!-- HERO -->
-<section class="relative overflow-hidden">
-  <div class="absolute inset-0 -z-10 bg-gradient-to-br from-zinc-50 via-emerald-50 to-zinc-50"></div>
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 -z-10 bg-gradient-to-br from-zinc-50 via-emerald-50 to-zinc-50"></div>
 
-  <div class="mx-auto max-w-6xl px-4 py-16 md:py-20 grid md:grid-cols-2 gap-12 items-center">
-    <!-- LEFT: text -->
-    <div>
-      <h1 class="text-4xl md:text-5xl font-semibold leading-tight">
-        PuppetX — Beyond strings, into motion
-      </h1>
-      <p class="mt-5 text-lg text-zinc-700">
-        My name is Lenny Filler, and I love sculpting human figures — or figures that
-        question humanity in their own way. Each puppet begins with the joy of discovering
-        the material, and often ends by surprising me, as if I’m only giving a small push
-        before the magic continues on its own. I like combining mediums from different eras,
-        exploring what separates the old from the new — not just in the material itself, but
-        in how its meaning shifts within culture. My work often touches on the place of women
-        in society, and on aesthetic and gendered perceptions of the body. I find comfort in
-        puppets, and use both traditional methods and new tools, including AI, to experiment
-        with animation, coding, and other techniques I never imagined using before.
-      </p>
-      <div class="mt-6 flex gap-3">
-        <a href="works.html" class="px-4 py-2 rounded-2xl bg-zinc-900 text-white">View selected works</a>
-        <a href="statement.html" class="px-4 py-2 rounded-2xl border border-zinc-300">Artist statement</a>
+      <div class="mx-auto max-w-6xl px-4 py-16 md:py-20 grid md:grid-cols-2 gap-12 items-center">
+        <!-- LEFT: text -->
+        <div>
+          <h1 class="text-4xl md:text-5xl font-semibold leading-tight">
+            PuppetX — Beyond strings, into motion
+          </h1>
+          <p class="mt-5 text-lg text-zinc-700">
+            My name is Lenny Filler, and I love sculpting human figures — or figures that
+            question humanity in their own way. Each puppet begins with the joy of discovering
+            the material, and often ends by surprising me, as if I’m only giving a small push
+            before the magic continues on its own. I like combining mediums from different eras,
+            exploring what separates the old from the new — not just in the material itself, but
+            in how its meaning shifts within culture. My work often touches on the place of women
+            in society, and on aesthetic and gendered perceptions of the body. I find comfort in
+            puppets, and use both traditional methods and new tools, including AI, to experiment
+            with animation, coding, and other techniques I never imagined using before.
+          </p>
+          <div class="mt-6 flex gap-3">
+            <a href="works.html" class="px-4 py-2 rounded-2xl bg-zinc-900 text-white">View selected works</a>
+            <a href="statement.html" class="px-4 py-2 rounded-2xl border border-zinc-300">Artist statement</a>
+          </div>
+        </div>
+
+        <!-- RIGHT: image box with electric swap -->
+        <div id="heroBox"
+             class="relative rounded-3xl shadow-xl overflow-hidden bg-black/10 h-[360px] md:h-[520px] lg:h-[560px]">
+
+          <!-- Base: lenzweld fixed & big -->
+          <img src="assets/lenzweld.png"
+               alt="Welding in the workshop"
+               class="absolute inset-0 w-full h-full object-cover select-none pointer-events-none">
+
+          <!-- Electric flash overlay (animated briefly before each swap) -->
+          <div id="electricFx" class="absolute inset-0 pointer-events-none mix-blend-screen">
+            <!-- soft radial flash -->
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.9),rgba(255,255,255,0)_60%)] opacity-70"></div>
+            <!-- zigzag spark line -->
+            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <path id="sparkPath"
+                    d="M5,70 L20,60 L35,75 L50,50 L65,62 L80,45 L95,55"
+                    fill="none" stroke="rgb(255,255,255)" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"
+                    style="filter: drop-shadow(0 0 6px rgba(0,255,200,0.9));"/>
+            </svg>
+          </div>
+
+          <!-- Top layer: logo that fades/zooms in & out -->
+          <img id="heroLogo"
+               src="assets/favicon2.png"
+               alt="PuppetX logo"
+               class="absolute inset-0 w-full h-full object-contain bg-white
+                      opacity-0 scale-75 transition-opacity duration-800 ease-out
+                      will-change-transform will-change-opacity">
+        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- RIGHT: image box with fancy swap -->
-    <div id="heroBox"
-         class="relative rounded-3xl shadow-xl overflow-hidden bg-black/10 h-[360px] md:h-[520px] lg:h-[560px]">
-
-      <!-- Base: lenzweld fixed & big -->
-      <img src="assets/lenzweld.png"
-           alt="Welding in the workshop"
-           class="absolute inset-0 w-full h-full object-cover select-none pointer-events-none">
-
-      <!-- Electric flash overlay (shown briefly before swap) -->
-      <div id="electricFx"
-           class="absolute inset-0 pointer-events-none opacity-0 mix-blend-screen">
-        <!-- soft radial flash -->
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.9),rgba(255,255,255,0)_60%)] opacity-70"></div>
-        <!-- zigzag spark line -->
-        <svg class="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-          <path id="sparkPath"
-                d="M5,70 L20,60 L35,75 L50,50 L65,62 L80,45 L95,55"
-                fill="none" stroke="rgb(255,255,255)" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round"
-                style="filter: drop-shadow(0 0 6px rgba(0,255,200,0.9));"/>
-        </svg>
-      </div>
-
-      <!-- Top layer: logo that fades/zooms in & out -->
-      <img id="heroLogo"
-           src="assets/favicon2.png"
-           alt="PuppetX logo"
-           class="absolute inset-0 w-full h-full object-contain bg-white
-                  opacity-0 scale-75 transition-opacity duration-800 ease-out
-                  will-change-transform will-change-opacity">
-    </div>
-  </div>
-</section>
-    
     <!-- HOME HIGHLIGHTS -->
     <section class="mx-auto max-w-6xl px-4 mt-16">
       <h2 class="text-xl font-semibold">Highlights</h2>
@@ -131,16 +141,17 @@
             <a href="works.html" class="inline-block mt-3 text-sm underline">See all works →</a>
           </div>
         </article>
-         
-        <!-- Card 5 -->
+
+        <!-- Card 2 -->
         <article class="rounded-xl border border-zinc-200 overflow-hidden">
           <img src="assets/project3.jpg" alt="Wood and wire figure" class="w-full h-44 object-cover" loading="lazy" decoding="async">
           <div class="p-4">
-            <h3 class="font-medium">Wood & Wire Figure</h3>
+            <h3 class="font-medium">Wood &amp; Wire Figure</h3>
             <p class="text-sm text-zinc-600 mt-2">Hybrid material study; tactile tactility and balance.</p>
           </div>
         </article>
-         <!-- Card 6 -->
+
+        <!-- Card 3 (video) -->
         <article class="rounded-xl border border-zinc-200 overflow-hidden">
           <div class="w-full h-44 bg-zinc-100 flex items-center justify-center">
             <video class="w-full h-full object-cover" controls playsinline preload="metadata">
@@ -156,30 +167,27 @@
     </section>
   </main>
 
- <footer class="border-t border-zinc-200 mt-16">
-  <div class="mx-auto max-w-6xl px-4 py-6 flex flex-col items-center gap-2 text-center">
-    <a href="index.html">
-      <img 
-        src="assets/favicon2.png" 
-        alt="LenzF logo" 
-        class="w-[84px] h-[84px]"
-        loading="lazy"
-        decoding="async"
-      >
-    </a>
-    <a href="index.html" class="font-semibold text-sm tracking-wide">LenzF</a>
-    <p class="text-xs text-zinc-600">© <span id="year"></span> All rights reserved.</p>
-  </div>
+  <footer class="border-t border-zinc-200 mt-16">
+    <div class="mx-auto max-w-6xl px-4 py-6 flex flex-col items-center gap-2 text-center">
+      <a href="index.html">
+        <img src="assets/favicon2.png" alt="LenzF logo" class="w-[84px] h-[84px]" loading="lazy" decoding="async">
+      </a>
+      <a href="index.html" class="font-semibold text-sm tracking-wide">LenzF</a>
+      <p class="text-xs text-zinc-600">© <span id="year"></span> All rights reserved.</p>
+    </div>
   </footer>
 
+  <!-- Scripts -->
   <script>
     // Mobile menu toggle
     const btn = document.getElementById('menuBtn');
     const mobileNav = document.getElementById('mobileNav');
-    btn && btn.addEventListener('click', () => {
-      const open = mobileNav.classList.toggle('hidden') === false;
-      btn.setAttribute('aria-expanded', String(open));
-    });
+    if (btn && mobileNav) {
+      btn.addEventListener('click', () => {
+        const open = mobileNav.classList.toggle('hidden') === false;
+        btn.setAttribute('aria-expanded', String(open));
+      });
+    }
 
     // Mark active nav link based on file name
     const here = location.pathname.split('/').pop() || 'index.html';
@@ -189,51 +197,51 @@
     });
 
     // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
- 
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  </script>
+
   <script>
-  // Fancy swap: base image stays; logo fades/zooms in & out.
-  const logo  = document.getElementById('heroLogo');
-  const fx    = document.getElementById('electricFx');
-  const spark = document.getElementById('sparkPath');
+    // Fancy swap: base image stays; logo fades/zooms in & out with electric flicker
+    const logo  = document.getElementById('heroLogo');
+    const fx    = document.getElementById('electricFx');
+    const spark = document.getElementById('sparkPath');
 
-  let showLogo = false;
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let showLogo = false;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function playElectricFx() {
-    // reset animations
-    fx.classList.remove('run-flicker');
-    spark.classList.remove('run-spark');
-    // force reflow
-    void fx.offsetWidth; void spark.offsetWidth;
-    // run
-    fx.classList.add('run-flicker');
-    spark.classList.add('run-spark');
-  }
+    function playElectricFx() {
+      // restart animations
+      fx.classList.remove('run-flicker');
+      spark.classList.remove('run-spark');
+      // force reflow to retrigger
+      void fx.offsetWidth; void spark.offsetWidth;
+      // run
+      fx.classList.add('run-flicker');
+      spark.classList.add('run-spark');
+    }
 
-  function swapFancy() {
-    playElectricFx();
+    function swapFancy() {
+      playElectricFx();
 
-    // after the flicker finishes (~500ms), toggle the logo layer
-    setTimeout(() => {
-      if (!showLogo) {
-        // show logo: fade in + gentle zoom in
-        logo.style.opacity = '1';
-        logo.style.transform = 'scale(1)';
-      } else {
-        // hide logo: fade out + slight zoom out
-        logo.style.opacity = '0';
-        logo.style.transform = 'scale(0.75)';
-      }
-      showLogo = !showLogo;
-    }, 520);
-  }
+      // after the flicker finishes (~500ms), toggle the logo layer
+      setTimeout(() => {
+        if (!showLogo) {
+          // show logo: fade in + gentle zoom in
+          logo.style.opacity = '1';
+          logo.style.transform = 'scale(1)';
+        } else {
+          // hide logo: fade out + slight zoom out
+          logo.style.opacity = '0';
+          logo.style.transform = 'scale(0.75)';
+        }
+        showLogo = !showLogo;
+      }, 520);
+    }
 
-  if (!prefersReduced) {
-    // start with logo hidden, then run every 6s
-    setInterval(swapFancy, 6000);
-  }
-</script>
-
+    if (!prefersReduced) {
+      setInterval(swapFancy, 6000); // loop every 6s
+    }
+  </script>
 </body>
 </html>
