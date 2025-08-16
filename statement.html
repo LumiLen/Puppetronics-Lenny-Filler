@@ -8,15 +8,18 @@
   <style>.active-link{font-weight:600}</style>
 </head>
 <body class="min-h-screen text-white">
-  <!-- Header -->
+  <!-- Header (same as others) -->
   <header class="sticky top-0 z-50 bg-white border-b border-zinc-200">
     <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
       <a href="index.html" class="font-semibold tracking-tight text-zinc-900">Lenny Filler · PuppetX</a>
       <nav class="hidden md:flex gap-6 text-sm">
-        <a href="index.html" class="text-zinc-900">Home</a><a href="works.html" class="text-zinc-900">Works</a><a href="statement.html" class="text-zinc-900">Statement</a>
-        <a href="apps-gear.html" class="text-zinc-900">Apps &amp; Gear</a><a href="cv.html" class="text-zinc-900">CV</a><a href="contact.html" class="text-zinc-900">Contact</a>
+        <a href="index.html" class="text-zinc-900">Home</a><a href="works.html" class="text-zinc-900">Works</a>
+        <a href="statement.html" class="text-zinc-900">Statement</a>
+        <a href="apps-gear.html" class="text-zinc-900">Apps &amp; Gear</a><a href="cv.html" class="text-zinc-900">CV</a>
+        <a href="contact.html" class="text-zinc-900">Contact</a>
       </nav>
-      <button id="menuBtn" class="md:hidden p-2 rounded border border-zinc-300 text-zinc-900" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle menu">☰</button>
+      <button id="menuBtn" class="md:hidden p-2 rounded border border-zinc-300 text-zinc-900"
+              aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle menu">☰</button>
     </div>
     <nav id="mobileNav" class="md:hidden hidden border-t border-zinc-200 bg-white">
       <div class="mx-auto max-w-6xl px-4 py-3 grid gap-3 text-sm text-zinc-900">
@@ -26,17 +29,15 @@
     </nav>
   </header>
 
-  <!-- Fixed background layers -->
-  <div class="fixed inset-0 -z-20 flex items-start justify-center">
-    <!-- WHOLE image visible; anchored to top so you reveal it as you scroll -->
+  <!-- FIXED background (matches Apps & Gear) -->
+  <div class="fixed inset-0 -z-20 flex items-center justify-center">
     <img src="assets/city.png" alt="Background"
-         class="w-full h-full object-contain object-top select-none pointer-events-none" />
+         class="w-full h-full object-contain select-none pointer-events-none" />
   </div>
-  <!-- White filter for readability (tweak 35–55 for taste) -->
-  <div class="fixed inset-0 -z-10 bg-white/1 pointer-events-none"></div>
+  <div class="fixed inset-0 -z-10 bg-white/5 backdrop-blur-[1px] pointer-events-none"></div>
 
   <main>
-    <!-- Content area with ~3cm side margins and enough height to scroll over bg -->
+    <!-- Content with ~3cm side margins and tall scroll to reveal the whole image -->
     <section class="mx-auto w-full max-w-[calc(100%-6cm)] px-4 md:px-8 py-16 md:py-24 min-h-[220vh]">
       <h1 class="text-2xl md:text-4xl font-semibold tracking-tight mb-6">Artist Statement</h1>
 
@@ -53,7 +54,7 @@
         </p>
       </div>
 
-      <!-- Optional extra spacer so you scroll past more of the image -->
+      <!-- extra spacer so you scroll further down the image -->
       <div class="h-[30vh] md:h-[40vh]"></div>
     </section>
   </main>
