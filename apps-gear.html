@@ -27,17 +27,112 @@
   </header>
 
   <main class="mx-auto max-w-3xl px-4 py-12 prose prose-zinc">
-    <h1>Research Focus</h1>
-    <p>
-      The Evolution of Figurative Sculpture by Female Artists (1925–2025): material use,
-      body perception, and life-stage interests across Euro‑American contexts.
-    </p>
-    <ul>
-      <li>Comparative case studies (10 US + 10 European sculptors)</li>
-      <li>Material choices vs. generational symbols</li>
-      <li>Aging, embodiment, and representation</li>
-    </ul>
-    <p>Selected PDFs and reading lists coming soon.</p>
+   <section class="mx-auto max-w-6xl px-4 py-12">
+  <h1 class="text-2xl font-semibold">Apps &amp; Gear</h1>
+  <p class="mt-3 text-zinc-700 max-w-3xl">
+    This page shows the tools I use to bring my puppets into the computer and make them move.
+    The short version: photos → 3D model → skeleton (rig) → motion from Rokoko → render or export as FBX/GLB.
+  </p>
+
+  <!-- Workflow steps -->
+  <div class="mt-8 grid md:grid-cols-2 gap-6">
+    <div class="p-5 rounded-2xl border border-zinc-200 bg-white">
+      <h2 class="font-medium">Workflow (short)</h2>
+      <ol class="mt-3 space-y-2 text-sm text-zinc-700 list-decimal pl-5">
+        <li><span class="font-medium">Photograph the puppet</span> — 50–200 photos in even light.</li>
+        <li><span class="font-medium">3D from photos</span> — upload to photogrammetry (Polycam / RealityCapture / Metashape / Meshroom).</li>
+        <li><span class="font-medium">Clean the model</span> in Blender: simplify, fix holes, UVs, bake textures.</li>
+        <li><span class="font-medium">Rig (skeleton)</span> — auto-rig with Mixamo or rig in Blender (Rigify). Export <span class="font-mono">.fbx</span>.</li>
+        <li><span class="font-medium">Motion capture</span> — record in Rokoko (Studio or Video). Export <span class="font-mono">.bvh</span>/<span class="font-mono">.fbx</span>.</li>
+        <li><span class="font-medium">Retarget &amp; animate</span> — apply motion to the rig (Rokoko plugin / Mixamo rig).</li>
+        <li><span class="font-medium">Render / export</span> — Blender render or export FBX/GLB.</li>
+      </ol>
+    </div>
+
+    <div class="p-5 rounded-2xl border border-zinc-200 bg-white">
+      <h2 class="font-medium">Apps I use</h2>
+      <ul class="mt-3 space-y-2 text-sm text-zinc-700">
+        <li><a class="underline" href="https://www.blender.org/" target="_blank" rel="noopener">Blender</a> — modeling, cleanup, rigging, rendering</li>
+        <li><a class="underline" href="https://www.mixamo.com/" target="_blank" rel="noopener">Mixamo</a> — quick auto-rig + test animations</li>
+        <li><a class="underline" href="https://www.rokoko.com/" target="_blank" rel="noopener">Rokoko Studio / Rokoko Video</a> — motion capture</li>
+        <li><a class="underline" href="https://poly.cam/" target="_blank" rel="noopener">Polycam</a> / 
+            <a class="underline" href="https://www.capturingreality.com/" target="_blank" rel="noopener">RealityCapture</a> / 
+            <a class="underline" href="https://www.agisoft.com/" target="_blank" rel="noopener">Metashape</a> /
+            <a class="underline" href="https://alicevision.org/#meshroom" target="_blank" rel="noopener">Meshroom</a> — photogrammetry</li>
+        <li><a class="underline" href="https://substance3d.adobe.com/" target="_blank" rel="noopener">Substance Painter</a> — optional texturing</li>
+      </ul>
+      <p class="mt-4 text-xs text-zinc-500">Tip: For photogrammetry, use diffuse light, avoid shiny surfaces, and overlap frames ~70%.</p>
+    </div>
+  </div>
+
+  <!-- Gear grid -->
+  <div class="mt-12">
+    <h2 class="text-lg font-medium">Gear I use</h2>
+    <p class="text-sm text-zinc-700 mt-1">Photos are placeholders—replace with your own. Each card can link to a store.</p>
+
+    <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Card: Camera / Phone -->
+      <article class="rounded-xl border border-zinc-200 overflow-hidden bg-white">
+        <img src="assets/gear-camera.jpg" alt="Camera or phone for photogrammetry" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+        <div class="p-4">
+          <h3 class="font-medium">Camera / Phone</h3>
+          <p class="text-sm text-zinc-600 mt-1">For photogrammetry capture</p>
+          <a class="underline text-sm mt-2 inline-block" href="#" target="_blank" rel="noopener">Buy / learn more →</a>
+        </div>
+      </article>
+
+      <!-- Card: Tripod & Turntable -->
+      <article class="rounded-xl border border-zinc-200 overflow-hidden bg-white">
+        <img src="assets/gear-turntable.jpg" alt="Tripod and motorized turntable" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+        <div class="p-4">
+          <h3 class="font-medium">Tripod + Turntable</h3>
+          <p class="text-sm text-zinc-600 mt-1">Stable shots; optional motorized turntable</p>
+          <a class="underline text-sm mt-2 inline-block" href="#" target="_blank" rel="noopener">Buy / learn more →</a>
+        </div>
+      </article>
+
+      <!-- Card: LED Panels / Light Tent -->
+      <article class="rounded-xl border border-zinc-200 overflow-hidden bg-white">
+        <img src="assets/gear-lights.jpg" alt="LED panels or light tent for even lighting" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+        <div class="p-4">
+          <h3 class="font-medium">LED Panels / Light Tent</h3>
+          <p class="text-sm text-zinc-600 mt-1">Even, soft light for clean solves</p>
+          <a class="underline text-sm mt-2 inline-block" href="#" target="_blank" rel="noopener">Buy / learn more →</a>
+        </div>
+      </article>
+
+      <!-- Card: Microcontrollers (Arduino/ESP32) -->
+      <article class="rounded-xl border border-zinc-200 overflow-hidden bg-white">
+        <img src="assets/gear-arduino.jpg" alt="Arduino or ESP32 microcontroller boards" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+        <div class="p-4">
+          <h3 class="font-medium">Microcontrollers</h3>
+          <p class="text-sm text-zinc-600 mt-1">Arduino / ESP32 for live puppets</p>
+          <a class="underline text-sm mt-2 inline-block" href="#" target="_blank" rel="noopener">Buy / learn more →</a>
+        </div>
+      </article>
+
+      <!-- Card: Sensors & IMU -->
+      <article class="rounded-xl border border-zinc-200 overflow-hidden bg-white">
+        <img src="assets/gear-sensors.jpg" alt="IMU and various sensors" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+        <div class="p-4">
+          <h3 class="font-medium">Sensors &amp; IMU</h3>
+          <p class="text-sm text-zinc-600 mt-1">Proximity, breath, IMU, reed switches</p>
+          <a class="underline text-sm mt-2 inline-block" href="#" target="_blank" rel="noopener">Buy / learn more →</a>
+        </div>
+      </article>
+
+      <!-- Card: LEDs & Servos -->
+      <article class="rounded-xl border border-zinc-200 overflow-hidden bg-white">
+        <img src="assets/gear-leds.jpg" alt="Addressable LEDs and small servos" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+        <div class="p-4">
+          <h3 class="font-medium">LEDs &amp; Servos</h3>
+          <p class="text-sm text-zinc-600 mt-1">WS2812B strips, SG90/MG90S</p>
+          <a class="underline text-sm mt-2 inline-block" href="#" target="_blank" rel="noopener">Buy / learn more →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
   </main>
 <section class="mt-16">
   <img 
