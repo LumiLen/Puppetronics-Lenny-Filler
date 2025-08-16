@@ -1,56 +1,136 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>PuppetX – Works</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      /* Fixed background */
-      .studio-bg {
-        background-image: url('studio.png');
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-      }
-    </style>
-  </head>
-  <body class="studio-bg min-h-screen text-white">
-    <!-- NAV -->
-    <header class="sticky top-0 z-50 backdrop-blur bg-black/60 border-b border-zinc-700">
-      <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-        <a href="index.html" class="font-semibold tracking-tight">PuppetX</a>
-        <nav class="hidden md:flex gap-6 text-sm">
-          <a href="index.html" class="hover:opacity-70">Home</a>
-          <a href="works.html" class="hover:opacity-70">Works</a>
-          <a href="statement.html" class="hover:opacity-70">Statement</a>
-          <a href="research.html" class="hover:opacity-70">Research</a>
-          <a href="cv.html" class="hover:opacity-70">CV</a>
-          <a href="contact.html" class="hover:opacity-70">Contact</a>
-        </nav>
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Works · PuppetX</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="assets/favicon.png" />
+  <style>.active-link{font-weight:600}</style>
+</head>
+<body class="min-h-screen text-zinc-900">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-zinc-900 text-white px-3 py-2 rounded">Skip to content</a>
+
+  <!-- header (unchanged) -->
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-zinc-200">
+    <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="font-semibold tracking-tight">Lenny Filler · PuppetX</a>
+      <nav class="hidden md:flex gap-6 text-sm">
+        <a href="index.html">Home</a><a href="works.html">Works</a><a href="statement.html">Statement</a>
+        <a href="apps-gear.html">Apps &amp; Gear</a><a href="cv.html">CV</a><a href="contact.html">Contact</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden p-2 rounded border border-zinc-300" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle menu">☰</button>
+    </div>
+    <nav id="mobileNav" class="md:hidden hidden border-t border-zinc-200">
+      <div class="mx-auto max-w-6xl px-4 py-3 grid gap-3 text-sm">
+        <a href="index.html">Home</a><a href="works.html">Works</a><a href="statement.html">Statement</a>
+        <a href="apps-gear.html">Apps &amp; Gear</a><a href="cv.html">CV</a><a href="contact.html">Contact</a>
       </div>
-    </header>
+    </nav>
+  </header>
 
-    <!-- WORK CONTENT -->
-    <main class="mx-auto max-w-6xl px-4 py-20">
-      <h1 class="text-4xl font-bold mb-8">Selected Works</h1>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-black/60 rounded-2xl p-6">
-          <img src="project1.jpg" alt="Project 1" class="rounded-lg mb-4">
-          <h2 class="text-xl font-semibold">Project 1</h2>
-          <p class="text-zinc-300 mt-2">Description of project 1.</p>
-        </div>
+  <!-- MAIN with fixed background -->
+  <main id="main" class="relative">
+    <!-- Fixed background image -->
+    <div class="fixed inset-0 -z-20 bg-cover bg-center"
+         style="background-image:url('assets/studio.png');"></div>
+    <!-- Soft overlay for readability (tweak 60–80 as you like) -->
+    <div class="fixed inset-0 -z-10 bg-white/70 pointer-events-none"></div>
 
-        <div class="bg-black/60 rounded-2xl p-6">
-          <video autoplay muted loop class="rounded-lg mb-4">
-            <source src="project2.mp4" type="video/mp4" />
-          </video>
-          <h2 class="text-xl font-semibold">Project 2</h2>
-          <p class="text-zinc-300 mt-2">Description of project 2.</p>
-        </div>
+    <!-- Your original content (unchanged structure & names) -->
+    <section class="mx-auto max-w-6xl px-4 py-12">
+      <h1 class="text-2xl md:text-4xl font-semibold tracking-tight">Works</h1>
+      <p class="mt-3 text-zinc-600">A selection of marionettes, mechanisms, and set experiments.</p>
 
-        <!-- Add more projects here -->
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <article class="rounded-xl border border-zinc-200 overflow-hidden bg-white">
+          <img src="assets/project1.jpg" alt="Cardboard marionette, 2024" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="font-medium">Cardboard Marionette (2024)</h3>
+            <p class="text-sm text-zinc-600 mt-2">Lightweight joints and expressive motion; quick-build workshop-ready.</p>
+          </div>
+        </article>
+
+        <!-- Card 2 (video) -->
+        <article class="rounded-xl border border-zinc-200 overflow-hidden bg-white">
+          <div class="w-full h-48 bg-zinc-100 flex items-center justify-center">
+            <video class="w-full h-full object-cover" controls playsinline preload="metadata">
+              <source src="assets/project2.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="p-4">
+            <h3 class="font-medium">Mechanism Study (2025)</h3>
+            <p class="text-sm text-zinc-600 mt-2">2D movement linkage; compact rig for classroom demos.</p>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="rounded-xl border border-zinc-200 overflow-hidden bg-white">
+          <img src="assets/project3.jpg" alt="Wood and wire figure" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="font-medium">Wood &amp; Wire Figure (2024)</h3>
+            <p class="text-sm text-zinc-600 mt-2">Material balance study; tactile tactility and stance.</p>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="rounded-xl border border-zinc-200 overflow-hidden bg-white">
+          <img src="assets/project1.jpg" alt="Cardboard marionette, 2024" class="w-full h-44 object-cover" loading="lazy" decoding="async">
+          <div class="p-4">
+            <h3 class="font-medium">Cardboard Marionette</h3>
+            <p class="text-sm text-zinc-600 mt-2">yapaa poo; yapaa ppaaah.</p>
+            <a href="works.html" class="inline-block mt-3 text-sm underline">See all works →</a>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="rounded-xl border border-zinc-200 overflow-hidden bg-white">
+          <img src="assets/project1.jpg" alt="Cardboard marionette, 2024" class="w-full h-44 object-cover" loading="lazy" decoding="async">
+          <div class="p-4">
+            <h3 class="font-medium">Cardboard Marionette</h3>
+            <p class="text-sm text-zinc-600 mt-2">bzzzzzzzzz; miaoooooo.</p>
+            <a href="works.html" class="inline-block mt-3 text-sm underline">See all works →</a>
+          </div>
+        </article>
+
+        <!-- Card 6 (video) -->
+        <article class="rounded-xl border border-zinc-200 overflow-hidden bg-white">
+          <div class="w-full h-44 bg-zinc-100 flex items-center justify-center">
+            <video class="w-full h-full object-cover" controls playsinline preload="metadata">
+              <source src="assets/project2.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="p-4">
+            <h3 class="font-medium">Mechanism Study</h3>
+            <p class="text-sm text-zinc-600 mt-2">2D puppetry movement experiments inspired by classmates’ designs.</p>
+          </div>
+        </article>
       </div>
-    </main>
-  </body>
+    </section>
+  </main>
+
+  <footer class="border-t border-zinc-200 mt-16">
+    <div class="mx-auto max-w-6xl px-4 py-6 flex flex-col items-center gap-2 text-center">
+      <a href="index.html">
+        <img 
+          src="assets/favicon2.png" 
+          alt="LenzF logo" 
+          class="w-[84px] h-[84px]"
+          loading="lazy"
+          decoding="async"
+        >
+      </a>
+      <a href="index.html" class="font-semibold text-sm tracking-wide">LenzF</a>
+      <p class="text-xs text-zinc-600">© <span id="year"></span> All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const btn=document.getElementById('menuBtn');const mobileNav=document.getElementById('mobileNav');
+    btn?.addEventListener('click',()=>{const open=mobileNav.classList.toggle('hidden')===false;btn.setAttribute('aria-expanded',String(open));});
+    const here=location.pathname.split('/').pop()||'index.html';
+    document.querySelectorAll('nav a').forEach(a=>{if(a.getAttribute('href')===here)a.classList.add('active-link');});
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
 </html>
