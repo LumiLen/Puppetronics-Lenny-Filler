@@ -29,16 +29,29 @@
     </nav>
   </header>
 
-  <!-- FIXED background (full width) -->
-  <div class="fixed inset-0 -z-20">
-    <!-- CHANGE 1: object-cover (fills width; crops some top/bottom) -->
-    <img src="assets/city.png" alt="Background"
-         class="w-full h-full object-cover select-none pointer-events-none" />
+<!-- Fixed background (no cropping) with blurred edge fill -->
+<div class="fixed inset-0 -z-20">
+  <!-- Blurred cover layer to fill side gaps -->
+  <img
+    src="assets/city.png"
+    alt=""
+    aria-hidden="true"
+    class="absolute inset-0 w-full h-full object-cover blur-2xl scale-110 opacity-80"
+  />
+  <!-- Crisp centered layer: whole image always visible -->
+  <div class="absolute inset-0 flex items-center justify-center">
+    <img
+      src="assets/city.png"
+      alt="city background"
+      class="max-w-full max-h-full object-contain select-none pointer-events-none"
+    />
   </div>
-  <!-- CHANGE 2: slightly stronger veil for readability -->
-  <div class="fixed inset-0 -z-10 bg-white/10 backdrop-blur-[1px] pointer-events-none"></div>
+</div>
 
+<!-- Soft white filter for readability (tweak /10–/30 to taste) -->
+<div class="fixed inset-0 -z-10 bg-white/1 backdrop-blur-[1px] pointer-events-none"></div>
   <main>
+    
     <!-- Content with ~3cm side margins; tall so you scroll “down the image” -->
     <section class="mx-auto w-full max-w-[calc(100%-6cm)] px-4 md:px-8 py-16 md:py-24 min-h-[220vh]">
       <h1 class="text-2xl md:text-4xl font-semibold tracking-tight mb-6">Artist Statement</h1>
