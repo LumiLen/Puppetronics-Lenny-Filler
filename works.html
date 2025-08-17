@@ -36,23 +36,28 @@
 </header>
 
 
-  <!-- MAIN with FIXED background (same behavior as Apps & Gear) -->
-  <main id="main" class="relative min-h-screen text-white">
-    <!-- Fixed background image (keeps entire image visible) -->
-    <div class="fixed inset-0 -z-20 flex items-center justify-center">
-      <!-- use your studio image here -->
-      <img src="assets/studio.png" alt="Workshop background"
-           class="w-full h-full object-contain select-none pointer-events-none" />
-    </div>
-    <!-- Light white filter for readability (tweak 25–45 to taste) -->
-    <div class="fixed inset-0 -z-10 bg-white/1 backdrop-blur-[1px] pointer-events-none"></div>
+ <!-- Fixed background (no cropping) with blurred edge fill -->
+<div class="fixed inset-0 -z-20">
+  <!-- Blurred cover layer to fill side gaps -->
+  <img
+    src="assets/studio.png"
+    alt=""
+    aria-hidden="true"
+    class="absolute inset-0 w-full h-full object-cover blur-2xl scale-110 opacity-80"
+  />
+  <!-- Crisp centered layer: whole image always visible -->
+  <div class="absolute inset-0 flex items-center justify-center">
+    <img
+      src="assets/studio.png"
+      alt="Workshop background"
+      class="max-w-full max-h-full object-contain select-none pointer-events-none"
+    />
+  </div>
+</div>
 
-    <!-- Content with ~3cm side margins; headings/intro text are WHITE -->
-    <section class="mx-auto w-full max-w-[calc(100%-6cm)] px-4 md:px-8 py-12">
-      <h1 class="text-2xl md:text-4xl font-semibold tracking-tight">Works</h1>
-      <p class="mt-3 max-w-3xl">
-        A selection of marionettes, mechanisms, and set experiments.
-      </p>
+<!-- Soft white filter for readability (tweak /10–/30 to taste) -->
+<div class="fixed inset-0 -z-10 bg-white/20 backdrop-blur-[1px] pointer-events-none"></div>
+
 
       <!-- Your original grid of boxes (KEPT; boxes stay white with dark text) -->
       <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
