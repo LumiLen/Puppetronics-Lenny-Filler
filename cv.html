@@ -8,79 +8,141 @@
   <style>.active-link{font-weight:600}</style>
 </head>
 <body class="min-h-screen bg-white text-zinc-900">
-  
-  <!-- header -->
+  <!-- Header (consistent) -->
   <header class="sticky top-0 z-50 bg-white border-b border-zinc-200">
-  <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-    <a href="index.html" class="font-semibold tracking-tight text-zinc-900">Lenny Filler · PuppetX</a>
-    <nav class="hidden md:flex gap-6 text-sm">
-      <a href="index.html" class="text-zinc-900">Home</a>
-      <a href="works.html" class="text-zinc-900">Works</a>
-      <a href="statement.html" class="text-zinc-900">Statement</a>
-      <a href="apps-gear.html" class="text-zinc-900">Apps &amp; Gear</a>
-      <a href="cv.html" class="text-zinc-900">CV</a>
-      <a href="contact.html" class="text-zinc-900">Contact</a>
+    <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="font-semibold tracking-tight text-zinc-900">Lenny Filler · PuppetX</a>
+      <nav class="hidden md:flex gap-6 text-sm">
+        <a href="index.html" class="text-zinc-900">Home</a>
+        <a href="works.html" class="text-zinc-900">Works</a>
+        <a href="statement.html" class="text-zinc-900">Statement</a>
+        <a href="apps-gear.html" class="text-zinc-900">Apps &amp; Gear</a>
+        <a href="cv.html" class="text-zinc-900">CV</a>
+        <a href="contact.html" class="text-zinc-900">Contact</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden p-2 rounded border border-zinc-300 text-zinc-900" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle menu">☰</button>
+    </div>
+    <nav id="mobileNav" class="md:hidden hidden border-t border-zinc-200 bg-white">
+      <div class="mx-auto max-w-6xl px-4 py-3 grid gap-3 text-sm text-zinc-900">
+        <a href="index.html">Home</a>
+        <a href="works.html">Works</a>
+        <a href="statement.html">Statement</a>
+        <a href="apps-gear.html">Apps &amp; Gear</a>
+        <a href="cv.html">CV</a>
+        <a href="contact.html">Contact</a>
+      </div>
     </nav>
-    <button id="menuBtn" class="md:hidden p-2 rounded border border-zinc-300 text-zinc-900" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle menu">☰</button>
-  </div>
-  <nav id="mobileNav" class="md:hidden hidden border-t border-zinc-200 bg-white">
-    <div class="mx-auto max-w-6xl px-4 py-3 grid gap-3 text-sm text-zinc-900">
-      <a href="index.html">Home</a>
-      <a href="works.html">Works</a>
-      <a href="statement.html">Statement</a>
-      <a href="apps-gear.html">Apps &amp; Gear</a>
-      <a href="cv.html">CV</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </nav>
-</header>
+  </header>
 
-  <main class="mx-auto max-w-3xl px-4 py-12">
-    <h1 class="text-2xl md:text-4xl font-semibold tracking-tight">Curriculum Vitae</h1>
-    <div class="mt-6 grid gap-6">
-      <section>
-        <h2 class="text-lg font-medium">Education</h2>
-        <ul class="mt-2 list-disc pl-5 text-zinc-700">
-          <li>…</li>
-        </ul>
-      </section>
+  <main class="mx-auto max-w-6xl px-4 md:px-6 py-10">
+    <h1 class="text-2xl md:text-3xl font-semibold tracking-tight">Curriculum Vitae</h1>
+    <p class="mt-2 text-zinc-600">The reel autoplays muted. Tap “Unmute” for sound. When it ends, a download button appears.</p>
 
-      <section>
-        <h2 class="text-lg font-medium">Exhibitions / Performances</h2>
-        <ul class="mt-2 list-disc pl-5 text-zinc-700">
-          <li>…</li>
-        </ul>
-      </section>
+    <!-- Video container -->
+    <section class="mt-6">
+      <div id="videoBox" class="relative w-full rounded-2xl overflow-hidden shadow-lg bg-black">
+        <!-- Vimeo embed -->
+        <div class="relative w-full" style="padding-top:56.25%;">
+          <iframe
+            id="vimeoPlayer"
+            src="https://player.vimeo.com/video/1110648398?autoplay=1&muted=1&playsinline=1&loop=0&autopause=0&title=0&byline=0&portrait=0&dnt=1"
+            class="absolute inset-0 w-full h-full"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+            title="CV Reel">
+          </iframe>
+        </div>
 
-      <section class="pt-4 border-t border-zinc-200">
-        <a href="assets/Lenny-Filler-CV.pdf" class="px-4 py-2 rounded bg-zinc-900 text-white" download>Download full CV (PDF)</a>
-      </section>
-    </div>
+        <!-- Unmute overlay -->
+        <button id="unmuteBtn"
+          class="absolute bottom-4 left-4 bg-zinc-900/90 text-white px-3 py-2 rounded-full shadow
+                 text-sm md:text-base">
+          🔊 Unmute
+        </button>
+
+        <!-- Appears when video ends -->
+        <a id="downloadBtn"
+           href="assets/Lenny-Filler-CV.pdf"
+           download="Lenny-Filler-CV.pdf"
+           class="opacity-0 pointer-events-none transition-opacity duration-300 ease-out
+                  absolute bottom-4 right-4 bg-emerald-600 text-white px-4 py-2 rounded-full shadow
+                  text-sm md:text-base">
+          Download CV (PDF)
+        </a>
+      </div>
+
+      <!-- Fallback link -->
+      <p class="mt-4 text-sm text-zinc-600">
+        Prefer direct download? <a href="assets/Lenny-Filler-CV.pdf" download class="underline">Get the PDF here</a>.
+      </p>
+    </section>
   </main>
 
- <footer class="border-t border-zinc-200 mt-16">
-  <div class="mx-auto max-w-6xl px-4 py-6 flex flex-col items-center gap-2 text-center">
-    <a href="index.html">
-      <img 
-        src="assets/favicon2.png" 
-        alt="LenzF logo" 
-        class="w-[84px] h-[84px]"
-        loading="lazy"
-        decoding="async"
-      >
-    </a>
-    <a href="index.html" class="font-semibold text-sm tracking-wide">LenzF</a>
-    <p class="text-xs text-zinc-600">© <span id="year"></span> All rights reserved.</p>
-  </div>
-</footer>
-  
+  <footer class="border-t border-zinc-200 mt-16">
+    <div class="mx-auto max-w-6xl px-4 py-6 flex flex-col items-center gap-2 text-center">
+      <a href="index.html">
+        <img src="assets/favicon2.png" alt="LenzF logo" class="w-[84px] h-[84px]" loading="lazy" decoding="async">
+      </a>
+      <a href="index.html" class="font-semibold text-sm tracking-wide">LenzF</a>
+      <p class="text-xs text-zinc-600">© <span id="year"></span> All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Vimeo Player API -->
+  <script src="https://player.vimeo.com/api/player.js"></script>
+
   <script>
-    const btn=document.getElementById('menuBtn');const mobileNav=document.getElementById('mobileNav');
-    btn?.addEventListener('click',()=>{const open=mobileNav.classList.toggle('hidden')===false;btn.setAttribute('aria-expanded',String(open));});
-    const here=location.pathname.split('/').pop()||'index.html';
-    document.querySelectorAll('nav a').forEach(a=>{if(a.getAttribute('href')===here)a.classList.add('active-link');});
-    document.getElementById('year').textContent=new Date().getFullYear();
+    // Mobile nav
+    const btn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    btn && btn.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('hidden') === false;
+      btn.setAttribute('aria-expanded', String(open));
+    });
+
+    // Vimeo player
+    const iframe = document.getElementById('vimeoPlayer');
+    const player = new Vimeo.Player(iframe);
+
+    // UI elements
+    const unmuteBtn   = document.getElementById('unmuteBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+
+    // Ensure we start muted (autoplay policy)
+    player.setVolume(0);
+
+    // Unmute handler (user gesture -> allowed)
+    unmuteBtn.addEventListener('click', async () => {
+      try {
+        await player.setVolume(1);  // set to full (0..1). You can use 0.7 if you prefer softer.
+        unmuteBtn.classList.add('hidden');
+      } catch (e) {
+        console.warn('Unmute failed:', e);
+      }
+    });
+
+    // If user mutes via Vimeo controls, show the Unmute button back
+    player.on('volumechange', async () => {
+      const vol = await player.getVolume();
+      if (vol === 0) unmuteBtn.classList.remove('hidden');
+    });
+
+    // Reveal the download button when the video ends
+    player.on('ended', () => {
+      downloadBtn.classList.remove('opacity-0', 'pointer-events-none');
+    });
+
+    // Optional: if the user replays, hide the download button again
+    player.on('play', async () => {
+      const t = await player.getCurrentTime();
+      if (t < 1) {
+        downloadBtn.classList.add('opacity-0', 'pointer-events-none');
+      }
+    });
+
+    // Year
+    const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
