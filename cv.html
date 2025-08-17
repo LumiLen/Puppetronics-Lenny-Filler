@@ -34,50 +34,63 @@
     </nav>
   </header>
 
-  <main class="mx-auto max-w-6xl px-4 md:px-6 py-10">
-    <h1 class="text-2xl md:text-3xl font-semibold tracking-tight">Curriculum Vitae</h1>
-    <p class="mt-2 text-zinc-600">The reel autoplays muted. Tap “Unmute” for sound. When it ends, a download button appears.</p>
+  <!-- HERO: full-bleed background Vimeo (no bars) -->
+  <section class="relative h-[calc(100vh-57px)] overflow-hidden"> <!-- 57px ≈ header height -->
+    <!-- Vimeo background player (fills container, muted, loops, no controls) -->
+    <iframe
+      id="bgVimeo"
+      class="absolute inset-0 w-full h-full"
+      src="https://player.vimeo.com/video/VIMEO_ID_HERE?background=1&autoplay=1&muted=1&loop=1&byline=0&title=0&portrait=0&dnt=1"
+      frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="CV Reel Background">
+    </iframe>
 
-    <!-- Video container -->
-    <section class="mt-6">
-      <div id="videoBox" class="relative w-full rounded-2xl overflow-hidden shadow-lg bg-black">
-        <!-- Vimeo embed -->
-        <div class="relative w-full" style="padding-top:56.25%;">
-          <iframe
-            id="vimeoPlayer"
-            src="https://player.vimeo.com/video/1110648398?autoplay=1&muted=1&playsinline=1&loop=0&autopause=0&title=0&byline=0&portrait=0&dnt=1"
-            class="absolute inset-0 w-full h-full"
-            frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowfullscreen
-            title="CV Reel">
-          </iframe>
-        </div>
+    <!-- Soft overlay for contrast -->
+    <div class="absolute inset-0 bg-black/20"></div>
 
-        <!-- Unmute overlay -->
-        <button id="unmuteBtn"
-          class="absolute bottom-4 left-4 bg-zinc-900/90 text-white px-3 py-2 rounded-full shadow
-                 text-sm md:text-base">
-          🔊 Unmute
+    <!-- Center overlay content -->
+    <div class="relative z-10 h-full flex items-center justify-center">
+      <div class="text-center px-4">
+        <h1 class="text-white text-3xl md:text-5xl font-semibold drop-shadow-sm">Curriculum Vitae</h1>
+        <p class="text-white/90 mt-3 drop-shadow-sm">Tap to play with sound. When it ends, you can download my CV.</p>
+
+        <button id="openModal"
+          class="mt-6 inline-flex items-center gap-2 bg-white text-zinc-900 px-5 py-3 rounded-full shadow hover:bg-zinc-100">
+          ▶️ Play with sound
         </button>
+      </div>
+    </div>
+  </section>
 
-        <!-- Appears when video ends -->
-        <a id="downloadBtn"
-           href="assets/Lenny-Filler-CV.pdf"
-           download="Lenny-Filler-CV.pdf"
-           class="opacity-0 pointer-events-none transition-opacity duration-300 ease-out
-                  absolute bottom-4 right-4 bg-emerald-600 text-white px-4 py-2 rounded-full shadow
-                  text-sm md:text-base">
-          Download CV (PDF)
-        </a>
+  <!-- Modal with normal Vimeo player (audio + controls) -->
+  <div id="videoModal" class="fixed inset-0 z-[60] hidden">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-black/70"></div>
+
+    <!-- Player box -->
+    <div class="relative mx-auto w-full max-w-5xl px-4 md:px-6 pt-16">
+      <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-black" style="padding-top:56.25%;">
+        <iframe
+          id="vimeoPlayer"
+          class="absolute inset-0 w-full h-full"
+          src="https://player.vimeo.com/video/1110648398?autoplay=1&muted=0&loop=0&autopause=0&title=0&byline=0&portrait=0&dnt=1&playsinline=1"
+          frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="CV Reel">
+        </iframe>
       </div>
 
-      <!-- Fallback link -->
-      <p class="mt-4 text-sm text-zinc-600">
-        Prefer direct download? <a href="assets/Lenny-Filler-CV.pdf" download class="underline">Get the PDF here</a>.
-      </p>
-    </section>
-  </main>
+      <!-- Controls row -->
+      <div class="flex items-center justify-between mt-4">
+        <button id="closeModal" class="text-white/90 hover:text-white underline">Close</button>
+
+        <!-- Hidden until video ends -->
+        <a id="downloadBtn"
+           href="assets/Lenny-Filler-CV.pdf" download="Lenny-Filler-CV.pdf"
+           class="opacity-0 pointer-events-none transition-opacity duration-300 ease-out
+                  inline-flex items-center gap-2 bg-emerald-600 text-white px-4 py-2 rounded-full shadow">
+          ⬇ Download CV (PDF)
+        </a>
+      </div>
+    </div>
+  </div>
 
   <footer class="border-t border-zinc-200 mt-16">
     <div class="mx-auto max-w-6xl px-4 py-6 flex flex-col items-center gap-2 text-center">
@@ -101,43 +114,38 @@
       btn.setAttribute('aria-expanded', String(open));
     });
 
-    // Vimeo player
+    // Modal logic
+    const openModal  = document.getElementById('openModal');
+    const closeModal = document.getElementById('closeModal');
+    const modal      = document.getElementById('videoModal');
+    const dlBtn      = document.getElementById('downloadBtn');
+
+    // Vimeo player inside modal
     const iframe = document.getElementById('vimeoPlayer');
     const player = new Vimeo.Player(iframe);
 
-    // UI elements
-    const unmuteBtn   = document.getElementById('unmuteBtn');
-    const downloadBtn = document.getElementById('downloadBtn');
-
-    // Ensure we start muted (autoplay policy)
-    player.setVolume(0);
-
-    // Unmute handler (user gesture -> allowed)
-    unmuteBtn.addEventListener('click', async () => {
-      try {
-        await player.setVolume(1);  // set to full (0..1). You can use 0.7 if you prefer softer.
-        unmuteBtn.classList.add('hidden');
-      } catch (e) {
-        console.warn('Unmute failed:', e);
-      }
+    openModal.addEventListener('click', () => {
+      modal.classList.remove('hidden');
+      // ensure starts with sound when user explicitly clicked
+      player.setCurrentTime(0).then(() => player.play());
     });
 
-    // If user mutes via Vimeo controls, show the Unmute button back
-    player.on('volumechange', async () => {
-      const vol = await player.getVolume();
-      if (vol === 0) unmuteBtn.classList.remove('hidden');
+    closeModal.addEventListener('click', () => {
+      player.pause();
+      modal.classList.add('hidden');
+      // hide download if they close before end
+      dlBtn.classList.add('opacity-0','pointer-events-none');
     });
 
-    // Reveal the download button when the video ends
+    // Show Download CV when the video ends
     player.on('ended', () => {
-      downloadBtn.classList.remove('opacity-0', 'pointer-events-none');
+      dlBtn.classList.remove('opacity-0','pointer-events-none');
     });
 
-    // Optional: if the user replays, hide the download button again
-    player.on('play', async () => {
-      const t = await player.getCurrentTime();
-      if (t < 1) {
-        downloadBtn.classList.add('opacity-0', 'pointer-events-none');
+    // Esc to close modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal.click();
       }
     });
 
