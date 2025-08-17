@@ -57,34 +57,30 @@
 <div class="fixed inset-0 -z-10 bg-white/1 backdrop-blur-[1px] pointer-events-none"></div>
 
 
-    <!-- Workflow + Apps (2 per row, ~3cm gaps, extra space above) -->
-<div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-[3cm]">
-  <div class="p-4 rounded-xl border border-zinc-200 bg-white/85 backdrop-blur text-zinc-800 text-sm">
+   <!-- Workflow + Apps (2 per row, narrower/taller boxes, margins) -->
+<div class="mt-32 px-[5cm] grid grid-cols-1 md:grid-cols-2 gap-y-[3cm] gap-x-[3cm]">
+  <div class="p-6 h-[28rem] w-[18rem] mx-auto rounded-xl border border-zinc-200 bg-white/85 backdrop-blur text-zinc-800 text-sm">
     <h2 class="font-medium text-zinc-900">Workflow (short)</h2>
     <ol class="mt-2 space-y-1 list-decimal pl-5">
       <li><span class="font-medium">Photograph the puppet</span> — 50–200 photos in even light.</li>
-      <li><span class="font-medium">3D from photos</span> — upload to photogrammetry (Polycam / RealityCapture / Metashape / Meshroom).</li>
-      <li><span class="font-medium">Clean the model</span> in Blender: simplify, fix holes, UVs, bake textures.</li>
-      <li><span class="font-medium">Rig (skeleton)</span> — auto-rig with Mixamo or rig in Blender (Rigify). Export <span class="font-mono">.fbx</span>.</li>
-      <li><span class="font-medium">Motion capture</span> — record in Rokoko (Studio or Video). Export <span class="font-mono">.bvh</span>/<span class="font-mono">.fbx</span>.</li>
-      <li><span class="font-medium">Retarget &amp; animate</span> — apply motion to the rig (Rokoko plugin / Mixamo rig).</li>
-      <li><span class="font-medium">Render / export</span> — Blender render or export FBX/GLB.</li>
+      <li><span class="font-medium">3D from photos</span> — Polycam / RealityCapture / Metashape / Meshroom.</li>
+      <li><span class="font-medium">Clean the model</span> in Blender.</li>
+      <li><span class="font-medium">Rig (skeleton)</span> — Mixamo or Rigify. Export <code>.fbx</code>.</li>
+      <li><span class="font-medium">Motion capture</span> — Rokoko Studio/Video.</li>
+      <li><span class="font-medium">Retarget &amp; animate</span> — Rokoko / Mixamo rig.</li>
+      <li><span class="font-medium">Render / export</span> — Blender / FBX / GLB.</li>
     </ol>
   </div>
 
-  <div class="p-4 rounded-xl border border-zinc-200 bg-white/85 backdrop-blur text-zinc-800 text-sm">
+  <div class="p-6 h-[28rem] w-[18rem] mx-auto rounded-xl border border-zinc-200 bg-white/85 backdrop-blur text-zinc-800 text-sm">
     <h2 class="font-medium text-zinc-900">Apps I use</h2>
     <ul class="mt-2 space-y-1">
-      <li><a class="underline" href="https://www.blender.org/" target="_blank" rel="noopener">Blender</a> — modeling, cleanup, rigging, rendering</li>
-      <li><a class="underline" href="https://www.mixamo.com/" target="_blank" rel="noopener">Mixamo</a> — quick auto-rig + test animations</li>
-      <li><a class="underline" href="https://www.rokoko.com/" target="_blank" rel="noopener">Rokoko Studio / Rokoko Video</a> — motion capture</li>
-      <li><a class="underline" href="https://poly.cam/" target="_blank" rel="noopener">Polycam</a> /
-          <a class="underline" href="https://www.capturingreality.com/" target="_blank" rel="noopener">RealityCapture</a> /
-          <a class="underline" href="https://www.agisoft.com/" target="_blank" rel="noopener">Metashape</a> /
-          <a class="underline" href="https://alicevision.org/#meshroom" target="_blank" rel="noopener">Meshroom</a> — photogrammetry</li>
-      <li><a class="underline" href="https://substance3d.adobe.com/" target="_blank" rel="noopener">Substance Painter</a> — optional texturing</li>
+      <li><a class="underline" href="https://www.blender.org/" target="_blank">Blender</a></li>
+      <li><a class="underline" href="https://www.mixamo.com/" target="_blank">Mixamo</a></li>
+      <li><a class="underline" href="https://www.rokoko.com/" target="_blank">Rokoko</a></li>
+      <li><a class="underline" href="https://poly.cam/" target="_blank">Polycam</a> / Metashape / Meshroom</li>
+      <li><a class="underline" href="https://substance3d.adobe.com/" target="_blank">Substance Painter</a></li>
     </ul>
-    <p class="mt-3 text-xs text-zinc-600">Tip: use diffuse light, avoid shiny surfaces, and overlap frames ~70%.</p>
   </div>
 </div>
 
