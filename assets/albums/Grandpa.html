@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cardboard Grandpa · Album · PuppetX</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" href="../favicon.png" /> <!-- was ../assets/favicon.png (WRONG from here) -->
+  <link rel="icon" href="../favicon.png" />
   <style>.active-link{font-weight:600}</style>
 </head>
 <body class="min-h-screen text-white">
@@ -31,7 +31,7 @@
     </nav>
   </header>
 
-  <!-- Fixed background (same look) -->
+  <!-- Fixed background -->
   <div class="fixed inset-0 -z-20">
     <img src="../studio.png" alt="" aria-hidden="true"
          class="absolute inset-0 w-full h-full object-cover blur-2xl scale-110 opacity-80" />
@@ -48,14 +48,12 @@
       <a href="../../works.html" class="inline-flex items-center text-sm text-white/90 underline">← Back to Works</a>
 
       <h1 class="mt-4 text-2xl md:text-4xl font-semibold tracking-tight">Cardboard Grandpa (2024)</h1>
-      <p class="mt-2 text-white/90 max-w-2xl">
-        blah blah.
-      </p>
+      <p class="mt-2 text-white/90 max-w-2xl">blah blah.</p>
 
       <!-- Gallery grid -->
-      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-       <button class="relative group" data-full="../gp1.jpg">
-  <img src="../gp1.jpg" class="w-full aspect-[4/3] object-cover rounded-lg ring-1 ring-white/20" alt="">
+      <div id="gallery" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <button class="relative group" data-full="../gp1.jpg">
+          <img src="../gp1.jpg" class="w-full aspect-[4/3] object-cover rounded-lg ring-1 ring-white/20" alt="">
           <span class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"></span>
         </button>
         <button class="relative group" data-full="../gp2.jpg">
@@ -70,9 +68,14 @@
     </section>
   </main>
 
-  <!-- Lightbox -->
+  <!-- Lightbox with arrows -->
   <div id="lb" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/80 p-4">
     <button id="lbClose" class="absolute top-4 right-4 text-white text-2xl" aria-label="Close">✕</button>
+
+    <!-- NEW: prev/next buttons -->
+    <button id="lbPrev" class="absolute left-4 text-white text-3xl p-2">‹</button>
+    <button id="lbNext" class="absolute right-4 text-white text-3xl p-2">›</button>
+
     <img id="lbImg" src="" alt="" class="max-w-full max-h-[90vh] rounded-lg shadow-xl">
   </div>
 
@@ -90,20 +93,50 @@
     // Mobile menu
     const btn=document.getElementById('menuBtn'); const mobileNav=document.getElementById('mobileNav');
     btn?.addEventListener('click',()=>{const open=mobileNav.classList.toggle('hidden')===false;btn.setAttribute('aria-expanded',String(open));});
-
-    // Year
     const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
 
-    // Lightbox
-    const lb=document.getElementById('lb'); const lbImg=document.getElementById('lbImg'); const lbClose=document.getElementById('lbClose');
-    document.querySelectorAll('[data-full]').forEach(el=>{
-      el.addEventListener('click', ()=>{ lbImg.src=el.getAttribute('data-full'); lb.classList.remove('hidden'); lb.classList.add('flex'); });
-    });
-    const closeLb=()=>{ lb.classList.add('hidden'); lb.classList.remove('flex'); lbImg.src=''; };
+    // Lightbox with navigation
+    const lb=document.getElementById('lb'); 
+    const lbImg=document.getElementById('lbImg'); 
+    const lbClose=document.getElementById('lbClose');
+    const lbPrev=document.getElementById('lbPrev');
+    const lbNext=document.getElementById('lbNext');
+
+    const thumbs=[...document.querySelectorAll('[data-full]')];
+    let currentIndex=0;
+
+    function openLb(i){
+      currentIndex=i;
+      lbImg.src=thumbs[i].dataset.full;
+      lb.classList.remove('hidden'); 
+      lb.classList.add('flex');
+    }
+    function closeLb(){
+      lb.classList.add('hidden'); 
+      lb.classList.remove('flex'); 
+      lbImg.src='';
+    }
+    function showNext(){
+      currentIndex=(currentIndex+1)%thumbs.length;
+      lbImg.src=thumbs[currentIndex].dataset.full;
+    }
+    function showPrev(){
+      currentIndex=(currentIndex-1+thumbs.length)%thumbs.length;
+      lbImg.src=thumbs[currentIndex].dataset.full;
+    }
+
+    thumbs.forEach((el,i)=> el.addEventListener('click',()=>openLb(i)));
     lbClose.addEventListener('click', closeLb);
+    lbPrev.addEventListener('click', showPrev);
+    lbNext.addEventListener('click', showNext);
+
     lb.addEventListener('click', (e)=>{ if(e.target===lb) closeLb(); });
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLb(); });
+    document.addEventListener('keydown', (e)=>{
+      if(lb.classList.contains('hidden')) return;
+      if(e.key==='Escape') closeLb();
+      if(e.key==='ArrowRight') showNext();
+      if(e.key==='ArrowLeft') showPrev();
+    });
   </script>
 </body>
 </html>
-
