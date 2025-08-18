@@ -4,7 +4,8 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cardboard Grandpa · Album · PuppetX</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" href="../favicon.png" /> <!-- was ../assets/favicon.png (WRONG from here) -->
+  <!-- FIXED: favicon path (this file lives in assets/albums/) -->
+  <link rel="icon" href="../assets/favicon.png" />
   <style>.active-link{font-weight:600}</style>
 </head>
 <body class="min-h-screen text-white">
@@ -12,6 +13,7 @@
   <!-- Header -->
   <header class="sticky top-0 z-50 bg-white border-b border-zinc-200">
     <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+      <!-- FIXED: go up two levels to reach root html files -->
       <a href="../../index.html" class="font-semibold tracking-tight text-zinc-900">Lenny Filler · PuppetX</a>
       <nav class="hidden md:flex gap-6 text-sm">
         <a href="../../index.html" class="text-zinc-900">Home</a>
@@ -33,10 +35,11 @@
 
   <!-- Fixed background (same look) -->
   <div class="fixed inset-0 -z-20">
-    <img src="../studio.png" alt="" aria-hidden="true"
+    <!-- FIXED: background paths -->
+    <img src="../assets/studio.png" alt="" aria-hidden="true"
          class="absolute inset-0 w-full h-full object-cover blur-2xl scale-110 opacity-80" />
     <div class="absolute inset-0 flex items-center justify-center">
-      <img src="../studio.png" alt="Workshop background"
+      <img src="../assets/studio.png" alt="Workshop background"
            class="max-w-full max-h-full object-contain select-none pointer-events-none" />
     </div>
   </div>
@@ -48,38 +51,47 @@
       <a href="../../works.html" class="inline-flex items-center text-sm text-white/90 underline">← Back to Works</a>
 
       <h1 class="mt-4 text-2xl md:text-4xl font-semibold tracking-tight">Cardboard Grandpa (2024)</h1>
-      <p class="mt-2 text-white/90 max-w-2xl">
-        blah blah.
-      </p>
+      <p class="mt-2 text-white/90 max-w-2xl">blah blah.</p>
 
       <!-- Gallery grid -->
       <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-       <button class="relative group" data-full="../gp1.jpg">
-  <img src="../gp1.jpg" class="w-full aspect-[4/3] object-cover rounded-lg ring-1 ring-white/20" alt="">
+        <!-- NOTE: these assume images live in assets/ (one level up from this file) -->
+        <button class="relative group" data-full="../assets/gp1.jpg">
+          <img src="../assets/gp1.jpg" class="w-full aspect-[4/3] object-cover rounded-lg ring-1 ring-white/20" alt="">
           <span class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"></span>
         </button>
-        <button class="relative group" data-full="../gp2.jpg">
-          <img src="../gp2.jpg" class="w-full aspect-[4/3] object-cover rounded-lg ring-1 ring-white/20" alt="">
+        <button class="relative group" data-full="../assets/gp2.jpg">
+          <img src="../assets/gp2.jpg" class="w-full aspect-[4/3] object-cover rounded-lg ring-1 ring-white/20" alt="">
           <span class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"></span>
         </button>
-        <button class="relative group" data-full="../gp3.jpg">
-          <img src="../gp3.jpg" class="w-full aspect-[4/3] object-cover rounded-lg ring-1 ring-white/20" alt="">
+        <button class="relative group" data-full="../assets/gp3.jpg">
+          <img src="../assets/gp3.jpg" class="w-full aspect-[4/3] object-cover rounded-lg ring-1 ring-white/20" alt="">
           <span class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"></span>
         </button>
       </div>
     </section>
   </main>
 
-  <!-- Lightbox -->
+  <!-- Lightbox with Prev/Next -->
   <div id="lb" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/80 p-4">
     <button id="lbClose" class="absolute top-4 right-4 text-white text-2xl" aria-label="Close">✕</button>
+
+    <button id="lbPrev" class="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 text-white/90
+                               text-4xl md:text-5xl px-3 md:px-4 rounded hover:text-white
+                               focus:outline-none" aria-label="Previous image">‹</button>
+
     <img id="lbImg" src="" alt="" class="max-w-full max-h-[90vh] rounded-lg shadow-xl">
+
+    <button id="lbNext" class="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 text-white/90
+                               text-4xl md:text-5xl px-3 md:px-4 rounded hover:text-white
+                               focus:outline-none" aria-label="Next image">›</button>
   </div>
 
   <footer class="border-t border-zinc-200 mt-16">
     <div class="mx-auto max-w-6xl px-4 py-6 flex flex-col items-center gap-2 text-center">
+      <!-- FIXED: footer logo path -->
       <a href="../../index.html">
-        <img src="../favicon2.png" alt="LenzF logo" class="w-[84px] h-[84px]" loading="lazy" decoding="async">
+        <img src="../assets/favicon2.png" alt="LenzF logo" class="w-[84px] h-[84px]" loading="lazy" decoding="async">
       </a>
       <a href="../../index.html" class="font-semibold text-sm tracking-wide text-zinc-900">LenzF</a>
       <p class="text-xs text-zinc-600">© <span id="year"></span> All rights reserved.</p>
@@ -88,21 +100,64 @@
 
   <script>
     // Mobile menu
-    const btn=document.getElementById('menuBtn'); const mobileNav=document.getElementById('mobileNav');
-    btn?.addEventListener('click',()=>{const open=mobileNav.classList.toggle('hidden')===false;btn.setAttribute('aria-expanded',String(open));});
+    const btn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    btn?.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('hidden') === false;
+      btn.setAttribute('aria-expanded', String(open));
+    });
 
     // Year
-    const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
+    const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
 
-    // Lightbox
-    const lb=document.getElementById('lb'); const lbImg=document.getElementById('lbImg'); const lbClose=document.getElementById('lbClose');
-    document.querySelectorAll('[data-full]').forEach(el=>{
-      el.addEventListener('click', ()=>{ lbImg.src=el.getAttribute('data-full'); lb.classList.remove('hidden'); lb.classList.add('flex'); });
-    });
-    const closeLb=()=>{ lb.classList.add('hidden'); lb.classList.remove('flex'); lbImg.src=''; };
+    // ===== Lightbox gallery with next/prev + keys + swipe =====
+    const thumbs = Array.from(document.querySelectorAll('[data-full]'));
+    const lb = document.getElementById('lb');
+    const lbImg = document.getElementById('lbImg');
+    const lbClose = document.getElementById('lbClose');
+    const lbPrev = document.getElementById('lbPrev');
+    const lbNext = document.getElementById('lbNext');
+
+    let current = -1;
+
+    function openAt(idx){
+      if(!thumbs.length) return;
+      current = (idx + thumbs.length) % thumbs.length;
+      lbImg.src = thumbs[current].getAttribute('data-full');
+      lb.classList.remove('hidden');
+      lb.classList.add('flex');
+    }
+    function closeLb(){
+      lb.classList.add('hidden');
+      lb.classList.remove('flex');
+      lbImg.src = '';
+      current = -1;
+    }
+    function showNext(){ if(current !== -1) openAt(current + 1); }
+    function showPrev(){ if(current !== -1) openAt(current - 1); }
+
+    thumbs.forEach((el, idx) => el.addEventListener('click', () => openAt(idx)));
+    lbNext.addEventListener('click', showNext);
+    lbPrev.addEventListener('click', showPrev);
     lbClose.addEventListener('click', closeLb);
-    lb.addEventListener('click', (e)=>{ if(e.target===lb) closeLb(); });
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLb(); });
+    lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLb(); });
+
+    document.addEventListener('keydown', (e) => {
+      if (lb.classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeLb();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft')  showPrev();
+    });
+
+    // Simple swipe
+    let touchStartX = null;
+    lb.addEventListener('touchstart', (e)=>{ touchStartX = e.changedTouches[0].clientX; }, {passive:true});
+    lb.addEventListener('touchend', (e)=>{
+      if(touchStartX == null) return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if(Math.abs(dx) > 40) (dx < 0 ? showNext() : showPrev());
+      touchStartX = null;
+    }, {passive:true});
   </script>
 </body>
 </html>
